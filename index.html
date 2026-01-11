@@ -25,6 +25,10 @@
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .section img:hover {
+            transform: scale(1.05);
         }
         .content {
             flex: 1;
@@ -57,19 +61,52 @@
         .telegram-link {
             display: inline-flex;
             align-items: center;
+            text-decoration: none;
+            color: black;
         }
         .telegram-icon {
             width: 40px;
             height: 40px;
             margin-left: 10px;
         }
+        .big-photo {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 40px 0;
+            border-radius: 15px;
+        }
+        .medium-photo {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        .small-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin: 0 20px 0 0;
+            float: left;
+        }
+        .bitcoin-section {
+            clear: both;
+            margin: 50px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
 
-<h1>привет, тут просто о базовой крипте, базовые приложения</h1>
+<h1>привет, тут просто о базовой крипте</h1>
 
 <p class="intro">смотри, тут всё очень просто</p>
+
+<!-- Большая фото после приветствия -->
+<img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="big-photo">
 
 <div class="section">
     <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот">
@@ -104,6 +141,85 @@
         можно обменивать<br>
         либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
         так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="content">
+        <h2>осторожно с фейк токенами</h2>
+        <p>фейк токены это поддельные монеты<br>
+        их создают мошенники чтобы обмануть<br>
+        <br>
+        они могут называться так же как настоящие<br>
+        но это полная ерунда без ценности<br>
+        <br>
+        как отличить:<br>
+        • проверяй официальный контракт на сайте проекта<br>
+        • смотри отзывы и обсуждения в чатах<br>
+        • если обещают нереальную прибыль за час это 100% развод<br>
+        • не покупай токены от незнакомцев в лс<br>
+        <br>
+        лучше потратить 5 минут на проверку<br>
+        чем потом потерять все деньги</p>
+    </div>
+</div>
+
+<!-- Блок про биткоин -->
+<div class="bitcoin-section">
+    <img src="https://commons.wikimedia.org/wiki/File:Bitcoin.svg" alt="биткоин" class="small-photo">
+    <h2>ооо) о великий биткоин</h2>
+    <p>всеми любимый всеми известный и популярный<br>
+    я думаю вы хотели его увидеть<br>
+    но на самом деле я никогда им не интересовался<br>
+    кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" target="_blank">про биткоин на википедии</a></p>
+</div>
+
+<!-- Блок про блокчейн -->
+<div class="section">
+    <div class="content">
+        <h2>что такое блокчейн</h2>
+        <p>это цепочка блоков с информацией<br>
+        как общая тетрадь которую все видят<br>
+        но никто не может исправить старое<br>
+        <br>
+        каждый блок это страница с записями<br>
+        кто кому сколько перевел<br>
+        все прозрачно и нельзя подделать<br>
+        <br>
+        это и есть основа всей крипты<br>
+        без блокчейна нет криптовалюты</p>
+    </div>
+</div>
+
+<img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="big-photo">
+
+<!-- Блок про майнинг -->
+<div class="section">
+    <div class="content">
+        <h2>про майнинг крипты</h2>
+        <p>майнинг это когда берут систему и на ней фармится крипта<br>
+        мощные компьютеры решают сложные задачи<br>
+        за это система дает им новые монеты<br>
+        <br>
+        это очень сильно нагружает оборудование<br>
+        нужны специальные машины с охлаждением<br>
+        много электричества уходит на это дело<br>
+        <br>
+        раньше можно было майнить на обычном пк<br>
+        сейчас нужны фермы из десятков видеокарт<br>
+        или специальные асики как на фото ниже</p>
+    </div>
+</div>
+
+<img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="big-photo">
+
+<div class="section">
+    <div class="content">
+        <h2>что это на фото</h2>
+        <p><strong>Машина для майнинга криптовалют MicroBT WhatsMiner M50s</strong><br>
+        <strong>хешрейт 118 тыс./с</strong><br>
+        <strong>алгоритм SHA256</strong><br>
+        <strong>сетевое подключение Ethernet | М50с 118Т</strong></p>
     </div>
 </div>
 
