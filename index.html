@@ -10,14 +10,14 @@
             font-family: sans-serif;
             margin: 40px;
             max-width: 800px;
-            line-height: 1.8;
-            font-size: 28px;
+            line-height: 1.9;
+            font-size: 32px;
         }
         .section {
-            margin: 60px 0;
+            margin: 70px 0;
             display: flex;
             align-items: flex-start;
-            gap: 30px;
+            gap: 35px;
         }
         .section img {
             width: 150px;
@@ -31,25 +31,37 @@
         }
         h1 {
             font-weight: normal;
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 25px;
         }
         h2 {
             font-weight: normal;
-            font-size: 32px;
+            font-size: 36px;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         p {
             margin: 0;
         }
         .intro {
-            font-size: 30px;
-            margin-bottom: 50px;
+            font-size: 34px;
+            margin-bottom: 60px;
         }
         .contact {
-            margin-top: 60px;
-            font-size: 26px;
+            margin-top: 80px;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+        }
+        .telegram-icon {
+            width: 32px;
+            height: 32px;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -101,8 +113,14 @@
 надеюсь вы прочитали все и вам понравилось<br>
 это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня</p>
 
-<p class="contact">удачи в мире крипты<br>
-Связь: tg:@wqwpwp</p>
+<div class="contact">
+    <span>удачи в мире крипты<br>
+    Связь:</span>
+    <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
+        tg:@wqwpwp
+        <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
+    </a>
+</div>
 
 </body>
 </html>
