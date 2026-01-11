@@ -15,7 +15,7 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 40px;
         }
         
         .header {
@@ -23,6 +23,7 @@
             font-weight: normal;
             margin-bottom: 10px;
             text-align: left;
+            padding-left: 40px;
         }
         
         .url {
@@ -30,6 +31,7 @@
             color: #555;
             margin-bottom: 40px;
             text-align: left;
+            padding-left: 40px;
         }
         
         .main-header {
@@ -38,6 +40,7 @@
             align-items: flex-start;
             gap: 40px;
             margin-bottom: 60px;
+            padding-left: 40px;
         }
         
         .title-section {
@@ -158,6 +161,10 @@
             padding: 10px;
         }
         
+        .content-wrapper {
+            padding-left: 40px;
+        }
+        
         .section {
             margin-bottom: 100px;
             text-align: left;
@@ -170,17 +177,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         
         .section-text {
-         font-size: 32px;
-         line-height: 1.6;
-         margin-bottom: 30px;
-         margin-left: 40px; /* ← Добавь эту строку */
-       
+            font-size: 32px;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
         
-            
         .highlight {
             background: #f0f0f0;
             padding: 5px 10px;
@@ -200,9 +203,9 @@
         
         .photo {
             width: 100%;
-            max-width: 750px;
+            max-width: 800px;
             height: auto;
-            margin: 40px 40px;
+            margin: 40px 0;
             border-radius: 10px;
             display: block;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -313,7 +316,7 @@
             width: 100%;
             max-width: 500px;
             height: auto;
-            margin: 40px auto;
+            margin: 40px 0;
             display: block;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -509,159 +512,163 @@
         </div>
     </div>
     
-    <img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="photo">
-    
-        <div class="section-title">Как создать этот крипто-кошелек?</div>
+    <div class="content-wrapper">
+        <img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="photo">
+        
+        <div class="wallet-text">
+            <img src="https://incrypted.com/wp-content/uploads/2024/09/bitcoin-wallet.jpg" alt="крипто кошелек" class="wallet-image-right">
+            <div class="section-title">Как создать этот крипто-кошелек?</div>
+            <div class="section-text">
+                для начала, тебе нужно скачать <a href="https://tonkeeper.com/" class="link" target="_blank">Tonkeeper</a><br>
+                открываешь его, вверху иконка кошелька<br>
+                выбираешь <span class="highlight">создать кошелек</span><br>
+                придумываешь надежный пароль<br>
+                повторяю его<br>
+                обязательно сохраняешь <span class="highlight">сид-фразу из 12 слов</span> в надежном месте<br>
+                <span class="highlight">НИКОМУ НЕ ПОКАЗЫВАЕШЬ</span><br>
+                подтверждаешь сид-фразу<br>
+                все, кошелек создан<br>
+                <span class="highlight">поздравляю</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">крипто бот</div>
+            <div class="section-text">
+                это крипто-кошелек в телеграме<br>
+                он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
+                в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
+                так же в нем есть прямой вывод денег, что очень полезно<br>
+                работает 24/7 без устали
+            </div>
+            <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот" class="three-small-photos">
+        </div>
+        
+        <div class="section">
+            <div class="section-title">тонкипер</div>
+            <div class="section-text">
+                это кошелек для крипты<br>
+                в нем очень удобно хранить свои деньги<br>
+                там хранится твоя криптовалюта<br>
+                и ключи от них только у тебя<br>
+                без банков и посредников
+            </div>
+            <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер" class="three-small-photos">
+        </div>
+        
+        <div class="section">
+            <div class="section-title">тонкоин</div>
+            <div class="section-text">
+                это очень крутая и удобная криптовалюта<br>
+                в ней можно покупать в различных онлайн сервисах<br>
+                можно обменивать<br>
+                либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
+                так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок
+            </div>
+            <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="тонкоин" class="three-small-photos">
+        </div>
+        
+        <div class="section">
+            <div class="section-title">осторожно с фейк токенами</div>
+            <div class="section-text">
+                фейк токены это поддельные монеты<br>
+                их создают мошенники чтобы обмануть<br>
+                <br>
+                они могут называться так же как настоящие<br>
+                но это полная ерунда без ценности<br>
+                <br>
+                как отличить:<br>
+                • проверяй официальный контракт на сайте проекта<br>
+                • смотри отзывы и обсуждения в чатах<br>
+                • если обещают нереальную прибыль за час это 100% развод<br>
+                • не покупай токены от незнакомцев в лс<br>
+                <br>
+                лучше потратить 5 минут на проверку<br>
+                чем потом потерять все деньги
+            </div>
+        </div>
+        
+        <div class="bitcoin-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png" alt="биткоин" class="small-photo">
+            <div class="bitcoin-title">ооо) о великий биткоин</div>
+            <div class="section-text">
+                всеми любимый всеми известный и популярный<br>
+                я думаю вы хотели его увидеть<br>
+                но на самом деле я никогда им не интересовался<br>
+                кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" class="link" target="_blank">про биткоин на википедии</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="photo">
+        
+        <div class="section">
+            <div class="section-title">что такое блокчейн</div>
+            <div class="section-text">
+                это цепочка блоков с информацией<br>
+                как общая тетрадь которую все видят<br>
+                но никто не может исправить старое<br>
+                <br>
+                каждый блок это страница с записями<br>
+                кто кому сколько перевел<br>
+                все прозрачно и нельзя подделать<br>
+                <br>
+                это и есть основа всей крипты<br>
+                без блокчейна нет криптовалюты
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">про майнинг крипты</div>
+            <div class="section-text">
+                майнинг это когда берут систему и на ней фармится крипта<br>
+                мощные компьютеры решают сложные задачи<br>
+                за это система дает им новые монеты<br>
+                <br>
+                это очень сильно нагружает оборудование<br>
+                нужны специальные машины с охлаждением<br>
+                много электричества уходит на это дело<br>
+                <br>
+                раньше можно было майнить на обычном пк<br>
+                сейчас нужны фермы из десятков видеокарт<br>
+                или специальные асики как на фото ниже
+            </div>
+        </div>
+        
+        <img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="photo">
+        
+        <div class="section">
+            <div class="section-title">что это на фото</div>
+            <div class="specs">
+                Машина для майнинга криптовалют MicroBT<br>
+                WhatsMiner M50s<br>
+                хешрейт 118 тыс./с<br>
+                алгоритм SHA256<br>
+                сетевое подключение Ethernet | M50с 118Т
+            </div>
+        </div>
+        
+        <img src="https://cs12.pikabu.ru/post_img/big/2022/08/17/7/1660734279181817342.png" alt="крипто мем" class="final-image">
+        
         <div class="section-text">
-            для начала, тебе нужно скачать <a href="https://tonkeeper.com/" class="link" target="_blank">Tonkeeper</a><br>
-            открываешь его, вверху иконка кошелька<br>
-            выбираешь <span class="highlight">создать кошелек</span><br>
-            придумываешь надежный пароль<br>
-            повторяешь его<br>
-            обязательно сохраняешь <span class="highlight">сид-фразу из 12 слов</span> в надежном месте<br>
-            <span class="highlight">НИКОМУ НЕ ПОКАЗЫВАЕШЬ</span><br>
-            подтверждаешь сид-фразу<br>
-            все, кошелек создан<br>
-            <span class="highlight">поздравляю</span>
+            вот так всё просто<br>
+            в криптовалюте можно разобраться очень быстро<br>
+            это очень удобно в современном мире<br>
+            надеюсь вы прочитали все и вам понравилось<br>
+            это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня
         </div>
-    </div>
-    
-    <div class="section">
-        <div class="section-title">крипто бот</div>
-        <div class="section-text">
-            это крипто-кошелек в телеграме<br>
-            он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
-            в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
-            так же в нем есть прямой вывод денег, что очень полезно<br>
-            работает 24/7 без устали
+        
+        <div class="contact">
+            удачи в мире крипты<br>
+            Связь: 
+            <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
+                tg:@wqwpwp
+                <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
+            </a>
         </div>
-        <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот" class="three-small-photos">
-    </div>
-    
-    <div class="section">
-        <div class="section-title">тонкипер</div>
-        <div class="section-text">
-            это кошелек для крипты<br>
-            в нем очень удобно хранить свои деньги<br>
-            там хранится твоя криптовалюта<br>
-            и ключи от них только у тебя<br>
-            без банков и посредников
-        </div>
-        <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер" class="three-small-photos">
-    </div>
-    
-    <div class="section">
-        <div class="section-title">тонкоин</div>
-        <div class="section-text">
-            это очень крутая и удобная криптовалюта<br>
-            в ней можно покупать в различных онлайн сервисах<br>
-            можно обменивать<br>
-            либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
-            так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок
-        </div>
-        <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="тонкоин" class="three-small-photos">
-    </div>
-    
-    <div class="section">
-        <div class="section-title">осторожно с фейк токенами</div>
-        <div class="section-text">
-            фейк токены это поддельные монеты<br>
-            их создают мошенники чтобы обмануть<br>
-            <br>
-            они могут называться так же как настоящие<br>
-            но это полная ерунда без ценности<br>
-            <br>
-            как отличить:<br>
-            • проверяй официальный контракт на сайте проекта<br>
-            • смотри отзывы и обсуждения в чатах<br>
-            • если обещают нереальную прибыль за час это 100% развод<br>
-            • не покупай токены от незнакомцев в лс<br>
-            <br>
-            лучше потратить 5 минут на проверку<br>
-            чем потом потерять все деньги
-        </div>
-    </div>
-    
-    <div class="bitcoin-section">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png" alt="биткоин" class="small-photo">
-        <div class="bitcoin-title">ооо) о великий биткоин</div>
-        <div class="section-text">
-            всеми любимый всеми известный и популярный<br>
-            я думаю вы хотели его увидеть<br>
-            но на самом деле я никогда им не интересовался<br>
-            кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" class="link" target="_blank">про биткоин на википедии</a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-    
-    <img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="photo">
-    
-    <div class="section">
-        <div class="section-title">что такое блокчейн</div>
-        <div class="section-text">
-            это цепочка блоков с информацией<br>
-            как общая тетрадь которую все видят<br>
-            но никто не может исправить старое<br>
-            <br>
-            каждый блок это страница с записями<br>
-            кто кому сколько перевел<br>
-            все прозрачно и нельзя подделать<br>
-            <br>
-            это и есть основа всей крипты<br>
-            без блокчейна нет криптовалюты
-        </div>
-    </div>
-    
-    <div class="section">
-        <div class="section-title">про майнинг крипты</div>
-        <div class="section-text">
-            майнинг это когда берут систему и на ней фармится крипта<br>
-            мощные компьютеры решают сложные задачи<br>
-            за это система дает им новые монеты<br>
-            <br>
-            это очень сильно нагружает оборудование<br>
-            нужны специальные машины с охлаждением<br>
-            много электричества уходит на это дело<br>
-            <br>
-            раньше можно было майнить на обычном пк<br>
-            сейчас нужны фермы из десятков видеокарт<br>
-            или специальные асики как на фото ниже
-        </div>
-    </div>
-    
-    <img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="photo">
-    
-    <div class="section">
-        <div class="section-title">что это на фото</div>
-        <div class="specs">
-            Машина для майнинга криптовалют MicroBT<br>
-            WhatsMiner M50s<br>
-            хешрейт 118 тыс./с<br>
-            алгоритм SHA256<br>
-            сетевое подключение Ethernet | M50с 118Т
-        </div>
-    </div>
-    
-    <img src="https://cs12.pikabu.ru/post_img/big/2022/08/17/7/1660734279181817342.png" alt="крипто мем" class="final-image">
-    
-    <div class="section-text">
-        вот так всё просто<br>
-        в криптовалюте можно разобраться очень быстро<br>
-        это очень удобно в современном мире<br>
-        надеюсь вы прочитали все и вам понравилось<br>
-        это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня
-    </div>
-    
-    <div class="contact">
-        удачи в мире крипты<br>
-        Связь: 
-        <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
-            tg:@wqwpwp
-            <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
-        </a>
     </div>
     
 </div>
 
 </body>
-    </html>
+            </html>
