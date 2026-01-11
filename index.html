@@ -10,24 +10,46 @@
             font-family: sans-serif;
             margin: 40px;
             max-width: 800px;
-            line-height: 1.6;
-            font-size: 24px;
+            line-height: 1.8;
+            font-size: 28px;
         }
-        .photos {
+        .section {
+            margin: 60px 0;
             display: flex;
-            justify-content: space-between;
-            margin: 40px 0;
-            gap: 20px;
+            align-items: flex-start;
+            gap: 30px;
         }
-        .photos img {
-            width: 30%;
+        .section img {
+            width: 150px;
+            height: 150px;
             border-radius: 10px;
             object-fit: cover;
-            height: 200px;
+            flex-shrink: 0;
         }
-        h1, h2 {
+        .content {
+            flex: 1;
+        }
+        h1 {
             font-weight: normal;
-            margin-top: 40px;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-weight: normal;
+            font-size: 32px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 0;
+        }
+        .intro {
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+        .contact {
+            margin-top: 60px;
+            font-size: 26px;
         }
     </style>
 </head>
@@ -35,34 +57,43 @@
 
 <h1>привет, тут просто о базовой крипте</h1>
 
-<p>смотри, тут всё очень просто</p>
+<p class="intro">смотри, тут всё очень просто</p>
 
-<div class="photos">
+<div class="section">
     <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот">
-    <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер">
-    <img src="https://pretty-picture-g2.s3.eu-central-1.amazonaws.com/ton_logo_light_background_f0b54815ce.webp" alt="тонкоин">
+    <div class="content">
+        <h2>крипто бот</h2>
+        <p>это крипто-кошелек в телеграме<br>
+        он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
+        в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
+        так же в нем есть прямой вывод денег, что очень полезно<br>
+        работает 24/7 без устали</p>
+    </div>
 </div>
 
-<h2>крипто бот</h2>
-<p>это крипто-кошелек в телеграме<br>
-он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
-в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
-так же в нем есть прямой вывод денег, что очень полезно<br>
-работает 24/7 без устали</p>
+<div class="section">
+    <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер">
+    <div class="content">
+        <h2>тонкипер</h2>
+        <p>это кошелек для крипты<br>
+        в нем очень удобно хранить свои деньги<br>
+        там хранится твоя криптовалюта<br>
+        и ключи от них только у тебя<br>
+        без банков и посредников</p>
+    </div>
+</div>
 
-<h2>тонкипер</h2>
-<p>это кошелек для крипты<br>
-в нем очень удобно хранить свои деньги<br>
-там хранится твоя криптовалюта<br>
-и ключи от них только у тебя<br>
-без банков и посредников</p>
-
-<h2>тонкоин</h2>
-<p>это очень крутая и удобная криптовалюта<br>
-в ней можно покупать в различных онлайн сервисах<br>
-можно обменивать<br>
-либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
-так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок</p>
+<div class="section">
+    <img src="https://pretty-picture-g2.s3.eu-central-1.amazonaws.com/ton_logo_light_background_f0b54815ce.webp" alt="тонкоин">
+    <div class="content">
+        <h2>тонкоин</h2>
+        <p>это очень крутая и удобная криптовалюта<br>
+        в ней можно покупать в различных онлайн сервисах<br>
+        можно обменивать<br>
+        либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
+        так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок</p>
+    </div>
+</div>
 
 <p>вот так всё просто<br>
 в криптовалюте можно разобраться очень быстро<br>
@@ -70,9 +101,8 @@
 надеюсь вы прочитали все и вам понравилось<br>
 это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня</p>
 
-<p>удачи в мире крипты</p>
-
-<p>Связь: tg:@wqwpwp</p>
+<p class="contact">удачи в мире крипты<br>
+Связь: tg:@wqwpwp</p>
 
 </body>
 </html>
