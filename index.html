@@ -8,238 +8,270 @@
             background: white;
             color: black;
             font-family: sans-serif;
-            margin: 40px;
-            max-width: 800px;
-            line-height: 2.0;
-            font-size: 36px;
+            margin: 0;
+            padding: 0;
         }
-        .section {
-            margin: 80px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
-        .section img {
-            width: 180px;
-            height: 180px;
-            border-radius: 12px;
-            object-fit: cover;
-            flex-shrink: 0;
-            transition: transform 0.3s;
-        }
-        .section img:hover {
-            transform: scale(1.05);
-        }
-        .content {
-            flex: 1;
-        }
-        h1 {
+        
+        .header {
+            font-size: 42px;
             font-weight: normal;
-            font-size: 46px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .url {
+            font-size: 28px;
+            color: #555;
+            margin-bottom: 60px;
+            text-align: left;
+        }
+        
+        .title {
+            font-size: 52px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .subtitle {
+            font-size: 36px;
+            margin-bottom: 80px;
+            text-align: left;
+        }
+        
+        .section {
+            margin-bottom: 100px;
+            text-align: left;
+        }
+        
+        .section-title {
+            font-size: 44px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-text {
+            font-size: 32px;
+            line-height: 1.6;
             margin-bottom: 30px;
         }
-        h2 {
-            font-weight: normal;
-            font-size: 42px;
-            margin-top: 0;
+        
+        .photo {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 40px 0;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .small-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            margin-right: 30px;
+            float: left;
+        }
+        
+        .bitcoin-section {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 50px 0;
+            overflow: hidden;
+        }
+        
+        .bitcoin-title {
+            font-size: 38px;
             margin-bottom: 20px;
         }
-        p {
-            margin: 0;
-            font-size: 36px;
+        
+        .specs {
+            font-size: 28px;
+            line-height: 1.8;
+            margin: 40px 0;
         }
-        .intro {
-            font-size: 38px;
-            margin-bottom: 70px;
-        }
+        
         .contact {
-            margin-top: 120px;
-            font-size: 36px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            font-size: 32px;
+            margin-top: 100px;
+            padding-top: 50px;
+            border-top: 2px solid #ddd;
         }
+        
         .telegram-link {
             display: inline-flex;
             align-items: center;
             text-decoration: none;
             color: black;
-            font-size: 36px;
         }
+        
         .telegram-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             margin-left: 15px;
         }
-        .big-photo {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            margin: 50px 0;
-            border-radius: 20px;
-        }
-        .medium-photo {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            margin: 40px 0;
-            border-radius: 15px;
-        }
-        .small-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 12px;
-            margin: 0 25px 0 0;
-            float: left;
-        }
-        .bitcoin-section {
+        
+        .clearfix {
             clear: both;
-            margin: 60px 0;
-            padding: 25px;
-            background: #f9f9f9;
-            border-radius: 15px;
-            font-size: 36px;
         }
     </style>
 </head>
 <body>
 
-<h1>привет, тут просто о базовой крипте</h1>
-
-<p class="intro">смотри, тут всё очень просто</p>
-
-<!-- Большая фото после приветствия -->
-<img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="big-photo">
-
-<div class="section">
-    <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот">
-    <div class="content">
-        <h2>крипто бот</h2>
-        <p>это крипто-кошелек в телеграме<br>
-        он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
-        в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
-        так же в нем есть прямой вывод денег, что очень полезно<br>
-        работает 24/7 без устали</p>
+<div class="container">
+    <div class="header">про базовую крипт...</div>
+    <div class="url">https://uxuxx.github.io</div>
+    
+    <div class="title">про базовую крипту</div>
+    
+    <div class="subtitle">привет, тут просто о базовой крипте</div>
+    
+    <div class="subtitle" style="margin-bottom: 60px;">смотри, тут всё очень просто</div>
+    
+    <img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="photo">
+    
+    <div class="section">
+        <div class="section-title">крипто бот</div>
+        <div class="section-text">
+            это крипто-кошелек в телеграме<br>
+            он предназначен для быстрой передачи крипты, отправит криптовалюту другому пользователю в телеграм очень легко и быстро<br>
+            в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
+            так же в нем есть прямой вывод денег, что очень полезно<br>
+            работает 24/7 без устали
+        </div>
+        <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот" class="photo">
     </div>
-</div>
-
-<div class="section">
-    <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер">
-    <div class="content">
-        <h2>тонкипер</h2>
-        <p>это кошелек для крипты<br>
-        в нем очень удобно хранить свои деньги<br>
-        там хранится твоя криптовалюта<br>
-        и ключи от них только у тебя<br>
-        без банков и посредников</p>
+    
+    <div class="section">
+        <div class="section-title">тонкипер</div>
+        <div class="section-text">
+            это кошелек для крипты<br>
+            в нем очень удобно хранить свои деньги<br>
+            там хранится твоя криптовалюта<br>
+            и ключи от них только у тебя<br>
+            без банков и посредников
+        </div>
+        <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер" class="photo">
     </div>
-</div>
-
-<div class="section">
-    <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="тонкоин">
-    <div class="content">
-        <h2>тонкоин</h2>
-        <p>это очень крутая и удобная криптовалюта<br>
-        в ней можно покупать в различных онлайн сервисах<br>
-        можно обменивать<br>
-        либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
-        так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок</p>
+    
+    <div class="section">
+        <div class="section-title">тонкоин</div>
+        <div class="section-text">
+            это очень крутая и удобная криптовалюта<br>
+            в ней можно покупать в различных онлайн сервисах<br>
+            можно обменивать<br>
+            либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
+            так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок
+        </div>
+        <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="тонкоин" class="photo">
     </div>
-</div>
-
-<div class="section">
-    <div class="content">
-        <h2>осторожно с фейк токенами</h2>
-        <p>фейк токены это поддельные монеты<br>
-        их создают мошенники чтобы обмануть<br>
-        <br>
-        они могут называться так же как настоящие<br>
-        но это полная ерунда без ценности<br>
-        <br>
-        как отличить:<br>
-        • проверяй официальный контракт на сайте проекта<br>
-        • смотри отзывы и обсуждения в чатах<br>
-        • если обещают нереальную прибыль за час это 100% развод<br>
-        • не покупай токены от незнакомцев в лс<br>
-        <br>
-        лучше потратить 5 минут на проверку<br>
-        чем потом потерять все деньги</p>
+    
+    <div class="section">
+        <div class="section-title">осторожно с фейк токенами</div>
+        <div class="section-text">
+            фейк токены это поддельные монеты<br>
+            их создают мошенники чтобы обмануть<br>
+            <br>
+            они могут называться так же как настоящие<br>
+            но это полная ерунда без ценности<br>
+            <br>
+            как отличить:<br>
+            • проверяй официальный контракт на сайте проекта<br>
+            • смотри отзывы и обсуждения в чатах<br>
+            • если обещают нереальную прибыль за час это 100% развод<br>
+            • не покупай токены от незнакомцев в лс<br>
+            <br>
+            лучше потратить 5 минут на проверку<br>
+            чем потом потерять все деньги
+        </div>
     </div>
-</div>
-
-<!-- Блок про биткоин -->
-<div class="bitcoin-section">
-    <img src="https://commons.wikimedia.org/wiki/File:Bitcoin.svg" alt="биткоин" class="small-photo">
-    <h2>ооо) о великий биткоин</h2>
-    <p>всеми любимый всеми известный и популярный<br>
-    я думаю вы хотели его увидеть<br>
-    но на самом деле я никогда им не интересовался<br>
-    кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" target="_blank">про биткоин на википедии</a></p>
-</div>
-
-<!-- Блок про блокчейн с фото сверху -->
-<img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="big-photo">
-
-<div class="section">
-    <div class="content">
-        <h2>что такое блокчейн</h2>
-        <p>это цепочка блоков с информацией<br>
-        как общая тетрадь которую все видят<br>
-        но никто не может исправить старое<br>
-        <br>
-        каждый блок это страница с записями<br>
-        кто кому сколько перевел<br>
-        все прозрачно и нельзя подделать<br>
-        <br>
-        это и есть основа всей крипты<br>
-        без блокчейна нет криптовалюты</p>
+    
+    <div class="bitcoin-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png" alt="биткоин" class="small-photo">
+        <div class="bitcoin-title">ооо) о великий биткоин</div>
+        <div class="section-text">
+            всеми любимый всеми известный и популярный<br>
+            я думаю вы хотели его увидеть<br>
+            но на самом деле я никогда им не интересовался<br>
+            кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" target="_blank">про биткоин на википедии</a>
+        </div>
+        <div class="clearfix"></div>
     </div>
-</div>
-
-<!-- Блок про майнинг - сначала текст -->
-<div class="section">
-    <div class="content">
-        <h2>про майнинг крипты</h2>
-        <p>майнинг это когда берут систему и на ней фармится крипта<br>
-        мощные компьютеры решают сложные задачи<br>
-        за это система дает им новые монеты<br>
-        <br>
-        это очень сильно нагружает оборудование<br>
-        нужны специальные машины с охлаждением<br>
-        много электричества уходит на это дело<br>
-        <br>
-        раньше можно было майнить на обычном пк<br>
-        сейчас нужны фермы из десятков видеокарт<br>
-        или специальные асики как на фото ниже</p>
+    
+    <img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="photo">
+    
+    <div class="section">
+        <div class="section-title">что такое блокчейн</div>
+        <div class="section-text">
+            это цепочка блоков с информацией<br>
+            как общая тетрадь которую все видят<br>
+            но никто не может исправить старое<br>
+            <br>
+            каждый блок это страница с записями<br>
+            кто кому сколько перевел<br>
+            все прозрачно и нельзя подделать<br>
+            <br>
+            это и есть основа всей крипты<br>
+            без блокчейна нет криптовалюты
+        </div>
     </div>
-</div>
-
-<!-- Фото майнинг машины снизу -->
-<img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="big-photo">
-
-<div class="section">
-    <div class="content">
-        <h2>что это на фото</h2>
-        <p><strong>Машина для майнинга криптовалют MicroBT WhatsMiner M50s</strong><br>
-        <strong>хешрейт 118 тыс./с</strong><br>
-        <strong>алгоритм SHA256</strong><br>
-        <strong>сетевое подключение Ethernet | М50с 118Т</strong></p>
+    
+    <div class="section">
+        <div class="section-title">про майнинг крипты</div>
+        <div class="section-text">
+            майнинг это когда берут систему и на ней фармится крипта<br>
+            мощные компьютеры решают сложные задачи<br>
+            за это система дает им новые монеты<br>
+            <br>
+            это очень сильно нагружает оборудование<br>
+            нужны специальные машины с охлаждением<br>
+            много электричества уходит на это дело<br>
+            <br>
+            раньше можно было майнить на обычном пк<br>
+            сейчас нужны фермы из десятков видеокарт<br>
+            или специальные асики как на фото ниже
+        </div>
     </div>
-</div>
-
-<p>вот так всё просто<br>
-в криптовалюте можно разобраться очень быстро<br>
-это очень удобно в современном мире<br>
-надеюсь вы прочитали все и вам понравилось<br>
-это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня</p>
-
-<div class="contact">
-    <span>удачи в мире крипты<br>
-    Связь:</span>
-    <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
-        tg:@wqwpwp
-        <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
-    </a>
+    
+    <img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="photo">
+    
+    <div class="section">
+        <div class="section-title">что это на фото</div>
+        <div class="specs">
+            Машина для майнинга криптовалют MicroBT<br>
+            WhatsMiner M50s<br>
+            xeupet/r 118 тыс./с<br>
+            алгоритм SHA256<br>
+            сетевое подключение Ethernet | M50c 118T
+        </div>
+    </div>
+    
+    <div class="section-text">
+        вот так всё просто<br>
+        в криптовалюте можно разобраться очень быстро<br>
+        это очень удобно в современном мире<br>
+        надеюсь вы прочитали все и вам понравилось<br>
+        это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня
+    </div>
+    
+    <div class="contact">
+        удачи в мире крипты<br>
+        Связь: 
+        <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
+            tg:@wqwpwp
+            <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
+        </a>
+    </div>
+    
 </div>
 
 </body>
