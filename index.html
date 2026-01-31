@@ -1,680 +1,563 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>про базовую крипту</title>
-    <meta charset="utf-8">
-    <link rel="canonical" href="https://uxuxx.ddns.net" />
-    <script>
-    if (window.location.hostname === 'uxuxx.github.io') {
-        window.location.href = 'https://uxuxx.ddns.net' + window.location.pathname;
-    }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WowBall</title>
     <style>
-        body {
-            background: white;
-            color: black;
-            font-family: sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            user-select: none;
         }
         
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 40px;
+        body {
+            background: white;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        .header {
-            font-size: 42px;
-            font-weight: normal;
-            margin-bottom: 10px;
-            text-align: left;
-            padding-left: 10px;
-        }
-        
-        .url {
-            font-size: 28px;
-            color: #555;
-            margin-bottom: 40px;
-            text-align: left;
-            padding-left: 10px;
-        }
-        
-        .main-header {
+        /* МЕНЮ */
+        #menuScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: white;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 60px;
-            padding-left: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
         }
         
-        .title-section {
-            flex: 1;
+        #title {
+            font-size: 64px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
         }
         
-        .title {
-            font-size: 52px;
-            font-weight: normal;
-            margin-bottom: 30px;
-            text-align: left;
+        #playButton {
+            padding: 18px 60px;
+            font-size: 22px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+            margin-top: 30px;
+        }
+        
+        #playButton:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+        
+        #playButton:active {
+            transform: translateY(0);
         }
         
         .subtitle {
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .mini-converter {
-            width: 350px;
-            background: #f9f9f9;
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid #eee;
-        }
-        
-        .mini-converter-title {
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .mini-rate {
-            font-size: 22px;
-            text-align: center;
-            margin-bottom: 25px;
-            color: #555;
-        }
-        
-        .ton-price {
-            color: black;
-            font-weight: bold;
-        }
-        
-        .mini-input {
-            width: 100%;
-            padding: 15px;
-            font-size: 32px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        
-        .mini-input:focus {
-            outline: none;
-            border-color: #333;
-        }
-        
-        .mini-currencies {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-        
-        .mini-currency {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #eee;
-        }
-        
-        .mini-currency-value {
-            font-size: 26px;
-            font-weight: bold;
-        }
-        
-        .mini-currency-symbol {
-            font-size: 22px;
-            color: #666;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .flag-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 3px;
-        }
-        
-        .crypto-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-        }
-        
-        .loading {
-            color: #999;
-            font-size: 20px;
-            text-align: center;
-            padding: 10px;
-        }
-        
-        .error {
-            color: #ff4444;
             font-size: 18px;
-            text-align: center;
-            padding: 10px;
+            color: #666;
+            margin-top: 20px;
+            font-weight: 400;
         }
         
-        .content-wrapper {
-            padding-left: 10px;
-        }
-        
-        .section {
-            margin-bottom: 100px;
-            text-align: left;
-        }
-        
-        .section-title {
-            font-size: 44px;
-            font-weight: normal;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .section-text {
-            font-size: 32px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        
-        .highlight {
-            background: #f0f0f0;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        
-        .link {
-            color: #0066cc;
-            text-decoration: none;
-            border-bottom: 1px solid #0066cc;
-        }
-        
-        .link:hover {
-            border-bottom: 2px solid #0066cc;
-        }
-        
-        .photo {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            margin: 40px 0;
-            border-radius: 10px;
-            display: block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .three-small-photos {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 10px;
-            display: block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .wallet-image-right {
-            width: 300px;
-            height: auto;
-            margin: 0 0 20px 30px;
-            border-radius: 10px;
-            float: right;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .wallet-text {
+        /* ИГРА */
+        #gameScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: none;
             overflow: hidden;
         }
         
-        .small-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            margin-right: 30px;
-            float: left;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        #timer {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 24px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
         }
         
-        .bitcoin-section {
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 50px 0;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        #player {
+            position: absolute;
+            background: #444;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.15s ease-out;
         }
         
-        .bitcoin-title {
-            font-size: 38px;
-            margin-bottom: 20px;
+        .obstacle {
+            position: absolute;
+            background: #FF9800;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         
-        .specs {
-            font-size: 28px;
-            line-height: 1.8;
-            margin: 40px 0;
-        }
-        
-        .contact {
-            font-size: 32px;
-            margin-top: 100px;
-            padding-top: 50px;
-            border-top: 2px solid #ddd;
-        }
-        
-        .telegram-link {
-            display: inline-flex;
+        /* ЭКРАН СМЕРТИ */
+        #deathScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.97);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            text-decoration: none;
-            color: black;
+            z-index: 50;
         }
         
-        .telegram-icon {
-            width: 40px;
-            height: 40px;
-            margin-left: 15px;
+        #deathTitle {
+            font-size: 42px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
         
-        .clearfix {
-            clear: both;
-        }
-        
-        .update-time {
-            font-size: 16px;
-            color: #777;
+        #deathStats {
+            font-size: 22px;
+            color: #555;
+            margin-bottom: 50px;
             text-align: center;
-            margin-top: 15px;
+            line-height: 1.6;
         }
         
-        .refresh-btn {
-            background: #333;
+        .stat-value {
+            color: #FF9800;
+            font-weight: 700;
+        }
+        
+        .death-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .death-button {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: #FF9800;
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 50px;
             cursor: pointer;
-            margin-top: 10px;
-            display: block;
-            width: 100%;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
         }
         
-        .refresh-btn:hover {
-            background: #555;
+        .death-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.3);
         }
         
-        .final-image {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            margin: 40px 0;
-            display: block;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        #menuButton {
+            background: #757575;
+        }
+        
+        #menuButton:hover {
+            background: #616161;
+            box-shadow: 0 6px 15px rgba(117, 117, 117, 0.3);
+        }
+        
+        /* ЭФФЕКТЫ */
+        .player-trail {
+            position: absolute;
+            background: rgba(68, 68, 68, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
         }
     </style>
-    
-    <script>
-        let exchangeRates = {
-            usd: 0,
-            rub: 0,
-            uah: 0,
-            btc: 0,
-            lastUpdated: null
-        };
-        
-        async function fetchRealTONRates() {
-            const rateElement = document.getElementById('ton-rate');
-            const errorElement = document.getElementById('api-error');
-            const updateElement = document.getElementById('update-time');
-            
-            rateElement.innerHTML = '<span class="loading">загрузка реального курса...</span>';
-            if (errorElement) errorElement.style.display = 'none';
-            
-            try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=the-open-network&vs_currencies=usd,rub,uah,btc&include_last_updated_at=true');
-                
-                if (!response.ok) throw new Error('API не отвечает');
-                
-                const data = await response.json();
-                
-                if (data['the-open-network']) {
-                    const tonData = data['the-open-network'];
-                    
-                    exchangeRates = {
-                        usd: tonData.usd || 0,
-                        rub: tonData.rub || 0,
-                        uah: tonData.uah || 0,
-                        btc: tonData.btc || 0,
-                        lastUpdated: new Date().toLocaleTimeString('ru-RU')
-                    };
-                    
-                    updateConverter();
-                    updateRateDisplay();
-                    
-                    if (updateElement) {
-                        updateElement.innerHTML = `обновлено: ${exchangeRates.lastUpdated}`;
-                    }
-                    
-                    return true;
-                } else {
-                    throw new Error('Данные не найдены');
-                }
-                
-            } catch (error) {
-                console.error('API Error:', error);
-                
-                try {
-                    const fallbackResponse = await fetch('https://api.coinpaprika.com/v1/tickers/ton-ton');
-                    const fallbackData = await fallbackResponse.json();
-                    
-                    if (fallbackData && fallbackData.quotes && fallbackData.quotes.USD) {
-                        const tonUsd = fallbackData.quotes.USD.price;
-                        
-                        exchangeRates = {
-                            usd: tonUsd,
-                            rub: tonUsd * 90,
-                            uah: tonUsd * 37,
-                            btc: tonUsd / 40000,
-                            lastUpdated: new Date().toLocaleTimeString('ru-RU') + ' (альтернативный источник)'
-                        };
-                        
-                        updateConverter();
-                        updateRateDisplay();
-                        
-                        if (updateElement) {
-                            updateElement.innerHTML = `обновлено: ${exchangeRates.lastUpdated}`;
-                        }
-                        
-                        return true;
-                    }
-                } catch (fallbackError) {
-                    console.error('Fallback API Error:', fallbackError);
-                }
-                
-                const errorMsg = document.getElementById('api-error');
-                if (errorMsg) {
-                    errorMsg.style.display = 'block';
-                    errorMsg.textContent = 'ошибка данных, повтори позже братан';
-                }
-                rateElement.innerHTML = '<span class="error">ошибка загрузки</span>';
-                return false;
-            }
-        }
-        
-        function updateRateDisplay() {
-            const rateElement = document.getElementById('ton-rate');
-            if (rateElement && exchangeRates.usd > 0) {
-                rateElement.innerHTML = `<span class="ton-price">$${exchangeRates.usd.toFixed(2)}</span> за 1 TON`;
-            }
-        }
-        
-        function convertTON() {
-            const tonAmount = parseFloat(document.getElementById('ton-input').value) || 0;
-            
-            if (exchangeRates.usd > 0) {
-                document.getElementById('usd-value').textContent = (tonAmount * exchangeRates.usd).toFixed(2);
-                document.getElementById('rub-value').textContent = (tonAmount * exchangeRates.rub).toFixed(2);
-                document.getElementById('uah-value').textContent = (tonAmount * exchangeRates.uah).toFixed(2);
-                document.getElementById('btc-value').textContent = (tonAmount * exchangeRates.btc).toFixed(6);
-            }
-        }
-        
-        function updateConverter() {
-            convertTON();
-        }
-        
-        window.onload = function() {
-            fetchRealTONRates();
-            setInterval(fetchRealTONRates, 60000);
-        };
-    </script>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">крипта, ухх... криптаа...</div>
-    <div class="url">всем спасибо кто прочитает</div>
-    
-    <div class="main-header">
-        <div class="title-section">
-            <div class="subtitle">привет, тут описано о базовой крипте</div>
-            <div class="subtitle" style="margin-bottom: 0;">смотри, тут всё очень просто...
-                
-            на сайте описаны базовые знания в мире криптовалют, тут написано о: как создать этот кошелек, базовые кошельки, что такое блокчейн, майнинг ферма, и тд.</div>
-        </div>
-        
-        <div class="mini-converter">
-            <div class="mini-converter-title">
-                <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="TON" class="crypto-icon">
-                конвертер тона
-            </div>
-            <div class="mini-rate" id="ton-rate">
-                <span class="loading">загрузка курса...</span>
-            </div>
-            
-            <div id="api-error" class="error" style="display: none;"></div>
-            
-            <input 
-                type="number" 
-                class="mini-input" 
-                id="ton-input" 
-                value="1" 
-                min="0" 
-                step="0.1"
-                oninput="convertTON()"
-            >
-            
-            <div class="mini-currencies">
-                <div class="mini-currency">
-                    <span class="mini-currency-value" id="usd-value">0.00</span>
-                    <div class="mini-currency-symbol">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="USA" class="flag-icon">
-                        <span>USD</span>
-                    </div>
-                </div>
-                
-                <div class="mini-currency">
-                    <span class="mini-currency-value" id="rub-value">0.00</span>
-                    <div class="mini-currency-symbol">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="Russia" class="flag-icon">
-                        <span>RUB</span>
-                    </div>
-                </div>
-                
-                <div class="mini-currency">
-                    <span class="mini-currency-value" id="uah-value">0.00</span>
-                    <div class="mini-currency-symbol">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Flag_of_Ukraine.png" alt="Ukraine" class="flag-icon">
-                        <span>UAH</span>
-                    </div>
-                </div>
-                
-                <div class="mini-currency">
-                    <span class="mini-currency-value" id="btc-value">0.000000</span>
-                    <div class="mini-currency-symbol">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png" alt="Bitcoin" class="crypto-icon">
-                        <span>BTC</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="update-time" id="update-time"></div>
-            <button class="refresh-btn" onclick="fetchRealTONRates()">обновить курсы</button>
-        </div>
+    <!-- МЕНЮ -->
+    <div id="menuScreen">
+        <div id="title">WowBall</div>
+        <button id="playButton">ИГРАТЬ</button>
+        <div class="subtitle">Избегай оранжевых препятствий</div>
     </div>
     
-    <div class="content-wrapper">
-        <img src="https://static.tildacdn.com/tild3533-3339-4164-b462-623634316561/-1.png" alt="крипто мир" class="photo">
-        
-        <div class="wallet-text">
-            <img src="https://incrypted.com/wp-content/uploads/2024/09/bitcoin-wallet.jpg" alt="крипто кошелек" class="wallet-image-right">
-            <div class="section-title">Как создать этот крипто-кошелек?</div>
-            <div class="section-text">
-                для начала, тебе нужно скачать <a href="https://tonkeeper.com/" class="link" target="_blank">Tonkeeper</a><br>
-                открываешь его, вверху иконка кошелька<br>
-                выбираешь <span class="highlight">создать кошелек</span><br>
-                придумываешь надежный пароль<br>
-                повторяешь его<br>
-                обязательно сохраняешь <span class="highlight">сид-фразу из 12 слов</span> в надежном месте<br>
-                <span class="highlight">НИКОМУ НЕ ПОКАЗЫВАЕШЬ</span><br>
-                подтверждаешь сид-фразу<br>
-                все, не понятно? смотри видос – https://youtu.be/lvXkSv9TAP4?si=IjwBagnpB6P38vwe, кошелек создан, поздравляю</div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-title">крипто бот</div>
-            <div class="section-text">
-                это крипто-кошелек в телеграме<br>
-                он предназначен для быстрой передачи крипты, отправить криптовалюту другому пользователю в телеграм очень легко и быстро<br>
-                в нем можно напрямую покупать крипту, через биржу или других пользователей<br>
-                так же в нем есть прямой вывод денег, что очень полезно<br>
-                работает 24/7 без устали, бот: @send
-            </div>
-            <img src="https://i.postimg.cc/4yt5xyfW/IMG-20260111-200920-199.jpg" alt="крипто бот" class="three-small-photos">
-        </div>
-        
-        <div class="section">
-            <div class="section-title">тонкипер</div>
-            <div class="section-text">
-                это кошелек для крипты<br>
-                в нем очень удобно хранить свои деньги<br>
-                там хранится твоя криптовалюта<br>
-                и ключи от них только у тебя<br>
-                без банков и посредников, скачать: https://tonkeeper.com/
-            </div>
-            <img src="https://avatars.mds.yandex.net/i?id=c801b6d75491d17b1a876f68e59e38b0_l-12605974-images-thumbs&n=13" alt="тонкипер" class="three-small-photos">
-        </div>
-        
-        <div class="section">
-            <div class="section-title">тонкоин</div>
-            <div class="section-text">
-                это очень крутая и удобная криптовалюта<br>
-                в ней можно покупать в различных онлайн сервисах<br>
-                можно обменивать<br>
-                либо даже очень сильно зарабатывать, так как он постоянно скачет<br>
-                так же он очень удобен в использовании, и просто это как и хорошая валюта, так и заработок
-            </div>
-            <img src="https://storage.dyor.io/jettons/EQCAknWvGxawz3y4cN6ISe4gFkAdbwfcpKYFfjTxksEabJZA/image.png" alt="тонкоин" class="three-small-photos">
-        </div>
-        
-        <div class="section">
-            <div class="section-title">осторожно с фейк токенами</div>
-            <div class="section-text">
-                фейк токены это поддельные монеты<br>
-                их создают мошенники чтобы обмануть<br>
-                <br>
-                они могут называться так же как настоящие<br>
-                но это полная ерунда без ценности<br>
-                <br>
-                как отличить:<br>
-                • проверяй официальный контракт на сайте проекта<br>
-                • смотри отзывы и обсуждения в чатах<br>
-                • если обещают нереальную прибыль за час это 100% развод<br>
-                • не покупай токены от незнакомцев в лс<br>
-                <br>
-                лучше потратить 5 минут на проверку<br>
-                чем потом потерять все деньги
-            </div>
-        </div>
-        
-        <div class="bitcoin-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Bitcoin.png" alt="биткоин" class="small-photo">
-            <div class="bitcoin-title">ооо) о великий биткоин</div>
-            <div class="section-text">
-                всеми любимый всеми известный и популярный<br>
-                я думаю вы хотели его увидеть<br>
-                но на самом деле я никогда им не интересовался<br>
-                кому интересно: <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD" class="link" target="_blank">про биткоин на википедии</a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        
-        <img src="https://101blockchains.com/wp-content/uploads/2018/07/How_Does_a_Blockchain_work-1024x686.jpg.webp" alt="блокчейн" class="photo">
-        
-        <div class="section">
-            <div class="section-title">что такое блокчейн</div>
-            <div class="section-text">
-                это цепочка блоков с информацией<br>
-                как общая тетрадь которую все видят<br>
-                но никто не может исправить старое<br>
-                <br>
-                каждый блок это страница с записями<br>
-                кто кому сколько перевел<br>
-                все прозрачно и нельзя подделать<br>
-                <br>
-                это и есть основа всей крипты<br>
-                без блокчейна нет криптовалюты
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-title">про майнинг крипты</div>
-            <div class="section-text">
-                майнинг это когда берут систему и на ней фармится крипта<br>
-                мощные компьютеры решают сложные задачи<br>
-                за это система дает им новые монеты<br>
-                <br>
-                это очень сильно нагружает оборудование<br>
-                нужны специальные машины с охлаждением<br>
-                много электричества уходит на это дело<br>
-                <br>
-                раньше можно было майнить на обычном пк<br>
-                сейчас нужны фермы из десятков видеокарт<br>
-                или специальные асики как на фото ниже
-            </div>
-        </div>
-        
-        <img src="https://microless.com/cdn/products/277f9a9a58faf0dfa53cf2940ffbb77a-hi.jpg" alt="майнинг машина" class="photo">
-        
-        <div class="section">
-            <div class="section-title">что это на фото</div>
-            <div class="specs">
-                Машина для майнинга криптовалют MicroBT<br>
-                WhatsMiner M50s<br>
-                хешрейт 118 тыс./с<br>
-                алгоритм SHA256<br>
-                сетевое подключение Ethernet | M50с 118Т
-            </div>
-        </div>
-        
-        <img src="https://cs12.pikabu.ru/post_img/big/2022/08/17/7/1660734279181817342.png" alt="крипто мем" class="final-image">
-        
-        <div class="section-text">
-            вот так всё просто<br>
-            в криптовалюте можно разобраться очень быстро<br>
-            это очень удобно в современном мире<br>
-            надеюсь вы прочитали все и вам понравилось<br>
-            это очень легко, я надеюсь вы поняли хоть что то, и в будущем вспомните меня
-        </div>
-        
-        <div class="contact">
-            удачи в мире крипты<br>
-            Связь: 
-            <a href="https://t.me/wqwpwp" class="telegram-link" target="_blank">
-                tg:@wqwpwp
-                <img src="https://static.vecteezy.com/system/resources/previews/042/148/651/large_2x/telegram-logo-telegram-social-media-icon-free-png.png" alt="telegram" class="telegram-icon">
-            </a>
-        </div>
+    <!-- ИГРА -->
+    <div id="gameScreen">
+        <div id="timer">0.000с</div>
+        <div id="player"></div>
     </div>
     
-</div>
+    <!-- ЭКРАН СМЕРТИ -->
+    <div id="deathScreen">
+        <div id="deathTitle">Игра окончена</div>
+        <div id="deathStats">
+            Время: <span id="finalTime" class="stat-value">0.000</span>с<br>
+            Уровень: <span id="finalLevel" class="stat-value">1</span><br>
+            Препятствий: <span id="finalObstacles" class="stat-value">0</span>
+        </div>
+        <div class="death-buttons">
+            <button class="death-button" id="restartButton">Ещё раз</button>
+            <button class="death-button" id="menuButton">Меню</button>
+        </div>
+    </div>
 
+    <script>
+        // ЭЛЕМЕНТЫ
+        const menuScreen = document.getElementById('menuScreen');
+        const gameScreen = document.getElementById('gameScreen');
+        const playButton = document.getElementById('playButton');
+        const player = document.getElementById('player');
+        const timerDisplay = document.getElementById('timer');
+        const deathScreen = document.getElementById('deathScreen');
+        const finalTimeDisplay = document.getElementById('finalTime');
+        const finalLevelDisplay = document.getElementById('finalLevel');
+        const finalObstaclesDisplay = document.getElementById('finalObstacles');
+        const restartButton = document.getElementById('restartButton');
+        const menuButton = document.getElementById('menuButton');
+        
+        // НАСТРОЙКИ ИГРЫ
+        const PLAYER_RADIUS = 22;
+        const PLAYER_HITBOX_REDUCTION = 0.70;
+        const OBSTACLE_HITBOX_REDUCTION = 0.85;
+        let gameTime = 0;
+        let gameRunning = false;
+        let obstacles = [];
+        let playerSpeed = 5;
+        let obstacleSpeed = 3.5;
+        let obstacleSpawnTime = 1.0; // Чуть быстрее в начале
+        let lastSpawnTime = 0;
+        let obstaclesPassed = 0;
+        let level = 1;
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let lastTrailTime = 0;
+        
+        // РАЗМЕР ИГРОКА
+        player.style.width = PLAYER_RADIUS * 2 + 'px';
+        player.style.height = PLAYER_RADIUS * 2 + 'px';
+        
+        // СОЗДАНИЕ СЛЕДА
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'player-trail';
+            trail.style.left = (x - PLAYER_RADIUS/2) + 'px';
+            trail.style.top = (y - PLAYER_RADIUS/2) + 'px';
+            trail.style.width = PLAYER_RADIUS + 'px';
+            trail.style.height = PLAYER_RADIUS + 'px';
+            gameScreen.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transition = 'opacity 0.6s';
+                setTimeout(() => trail.remove(), 600);
+            }, 100);
+        }
+        
+        // СОЗДАНИЕ ПРЕПЯТСТВИЯ
+        function createObstacle() {
+            const types = ['stick', 'square', 'bar', 'rectangle'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            
+            let width, height;
+            
+            switch(type) {
+                case 'stick':
+                    width = 12 + Math.random() * 10;
+                    height = 60 + Math.random() * 80;
+                    break;
+                case 'square':
+                    width = height = 35 + Math.random() * 25;
+                    break;
+                case 'bar':
+                    width = 100 + Math.random() * 60;
+                    height = 15 + Math.random() * 10;
+                    break;
+                case 'rectangle':
+                    width = 40 + Math.random() * 30;
+                    height = 25 + Math.random() * 20;
+                    break;
+            }
+            
+            obstacle.style.width = width + 'px';
+            obstacle.style.height = height + 'px';
+            
+            // Позиция сверху с проходом
+            const gapWidth = 100 + Math.random() * 80;
+            const gapX = Math.random() * (window.innerWidth - gapWidth - width);
+            
+            // Распределяем препятствия так, чтобы оставался проход
+            let xPos;
+            if (Math.random() > 0.5) {
+                xPos = Math.random() * gapX;
+            } else {
+                xPos = gapX + gapWidth + Math.random() * (window.innerWidth - gapX - gapWidth - width);
+            }
+            
+            obstacle.style.left = xPos + 'px';
+            obstacle.style.top = '-100px';
+            
+            // Иногда добавляем вращение
+            if (Math.random() > 0.7) {
+                const rotation = Math.random() * 45 - 22.5;
+                obstacle.style.transform = `rotate(${rotation}deg)`;
+            }
+            
+            gameScreen.appendChild(obstacle);
+            
+            obstacles.push({
+                element: obstacle,
+                x: xPos,
+                y: -100,
+                width: width,
+                height: height,
+                speed: obstacleSpeed * (0.9 + Math.random() * 0.2),
+                rotation: parseFloat(obstacle.style.transform?.replace('rotate(', '')?.replace('deg)', '')) || 0
+            });
+            
+            obstaclesPassed++;
+            
+            // ЧУТЬ чаще второе препятствие
+            if (Math.random() > 0.5 && obstaclesPassed > 3 && gameTime > 8) {
+                setTimeout(() => {
+                    if (gameRunning && obstacles.length < 8) {
+                        createObstacle();
+                    }
+                }, 200 + Math.random() * 300);
+            }
+        }
+        
+        // ОБНОВЛЕНИЕ ИГРОКА
+        function updatePlayer() {
+            const currentX = parseFloat(player.style.left) || window.innerWidth / 2;
+            const currentY = parseFloat(player.style.top) || window.innerHeight / 2;
+            
+            const dx = mouseX - currentX;
+            const dy = mouseY - currentY;
+            
+            const moveSpeed = playerSpeed * 0.06;
+            player.style.left = (currentX + dx * moveSpeed) + 'px';
+            player.style.top = (currentY + dy * moveSpeed) + 'px';
+            
+            // Границы экрана
+            player.style.left = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, parseFloat(player.style.left))) + 'px';
+            player.style.top = Math.max(0, Math.min(window.innerHeight - PLAYER_RADIUS*2, parseFloat(player.style.top))) + 'px';
+            
+            // След
+            if (Date.now() - lastTrailTime > 40) {
+                createTrail(currentX + PLAYER_RADIUS, currentY + PLAYER_RADIUS);
+                lastTrailTime = Date.now();
+            }
+        }
+        
+        // ОБНОВЛЕНИЕ ПРЕПЯТСТВИЙ
+        function updateObstacles(deltaTime) {
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obs = obstacles[i];
+                obs.y += obs.speed;
+                obs.element.style.top = obs.y + 'px';
+                
+                // Медленное вращение
+                if (obs.rotation !== 0) {
+                    obs.rotation += 0.5;
+                    obs.element.style.transform = `rotate(${obs.rotation}deg)`;
+                }
+                
+                // Проверка столкновения
+                const playerRect = {
+                    left: parseFloat(player.style.left) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                    right: parseFloat(player.style.left) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                    top: parseFloat(player.style.top) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                    bottom: parseFloat(player.style.top) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION)
+                };
+                
+                const obsHitboxWidth = obs.width * OBSTACLE_HITBOX_REDUCTION;
+                const obsHitboxHeight = obs.height * OBSTACLE_HITBOX_REDUCTION;
+                const obsHitboxX = obs.x + (obs.width - obsHitboxWidth) / 2;
+                const obsHitboxY = obs.y + (obs.height - obsHitboxHeight) / 2;
+                
+                const obsHitboxRect = {
+                    left: obsHitboxX,
+                    right: obsHitboxX + obsHitboxWidth,
+                    top: obsHitboxY,
+                    bottom: obsHitboxY + obsHitboxHeight
+                };
+                
+                if (checkCollision(playerRect, obsHitboxRect)) {
+                    endGame();
+                    return;
+                }
+                
+                // Удаление за экраном
+                if (obs.y > window.innerHeight) {
+                    obs.element.remove();
+                    obstacles.splice(i, 1);
+                }
+            }
+        }
+        
+        // ПРОВЕРКА СТОЛКНОВЕНИЯ
+        function checkCollision(rect1, rect2) {
+            return !(rect1.right < rect2.left || 
+                     rect1.left > rect2.right || 
+                     rect1.bottom < rect2.top || 
+                     rect1.top > rect2.bottom);
+        }
+        
+        // ИГРОВОЙ ЦИКЛ
+        let lastTime = 0;
+        function gameLoop(currentTime) {
+            if (!gameRunning) return;
+            
+            const deltaTime = (currentTime - lastTime) / 1000;
+            lastTime = currentTime;
+            
+            // Обновление времени
+            gameTime += deltaTime;
+            timerDisplay.textContent = gameTime.toFixed(3) + 'с';
+            
+            // Увеличение уровня каждые 7 секунд
+            const newLevel = Math.floor(gameTime / 7) + 1;
+            if (newLevel > level) {
+                level = newLevel;
+                // ЧУТЬ больше ускорение
+                obstacleSpeed = 3.5 + level * 0.45;
+                playerSpeed = 5 + level * 0.3;
+            }
+            
+            // Обновление игрока
+            updatePlayer();
+            
+            // Спавн препятствий - ЧУТЬ БОЛЬШЕ
+            lastSpawnTime += deltaTime;
+            if (lastSpawnTime > obstacleSpawnTime) {
+                // ЧУТЬ больше препятствий на экране
+                if (obstacles.length < 7) {
+                    createObstacle();
+                }
+                lastSpawnTime = 0;
+                
+                // ЧУТЬ быстрее спавн
+                obstacleSpawnTime = Math.max(0.6, 1.0 / (level * 0.45));
+                
+                // После 10 секунд - ЧУТЬ быстрее
+                if (gameTime > 10) {
+                    obstacleSpawnTime = Math.max(0.5, obstacleSpawnTime);
+                }
+                
+                // После 30 секунд - ЧУТЬ быстрее
+                if (gameTime > 30) {
+                    obstacleSpawnTime = Math.max(0.4, obstacleSpawnTime);
+                }
+                
+                // После 60 секунд - ЧУТЬ быстрее
+                if (gameTime > 60) {
+                    obstacleSpawnTime = Math.max(0.35, obstacleSpawnTime);
+                }
+                
+                // После 100 секунд - ЧУТЬ быстрее
+                if (gameTime > 100) {
+                    obstacleSpawnTime = Math.max(0.3, obstacleSpawnTime);
+                }
+            }
+            
+            // Обновление препятствий
+            updateObstacles(deltaTime);
+            
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // НАЧАЛО ИГРЫ
+        function startGame() {
+            // Сброс
+            gameTime = 0;
+            obstacles.forEach(obs => obs.element.remove());
+            obstacles = [];
+            obstaclesPassed = 0;
+            level = 1;
+            obstacleSpeed = 3.5;
+            playerSpeed = 5;
+            obstacleSpawnTime = 1.0;
+            lastSpawnTime = 0;
+            
+            // Позиция игрока
+            mouseX = window.innerWidth / 2;
+            mouseY = window.innerHeight / 2;
+            player.style.left = (window.innerWidth / 2 - PLAYER_RADIUS) + 'px';
+            player.style.top = (window.innerHeight / 2 - PLAYER_RADIUS) + 'px';
+            
+            // Запуск игры
+            gameRunning = true;
+            deathScreen.style.display = 'none';
+            gameScreen.style.display = 'block';
+            
+            lastTime = performance.now();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // КОНЕЦ ИГРЫ
+        function endGame() {
+            gameRunning = false;
+            
+            // Статистика
+            finalTimeDisplay.textContent = gameTime.toFixed(3);
+            finalLevelDisplay.textContent = level;
+            finalObstaclesDisplay.textContent = obstaclesPassed;
+            
+            // Показываем экран смерти
+            setTimeout(() => {
+                deathScreen.style.display = 'flex';
+            }, 700);
+        }
+        
+        // УПРАВЛЕНИЕ
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }, { passive: false });
+        
+        // КНОПКИ
+        playButton.addEventListener('click', () => {
+            menuScreen.style.display = 'none';
+            startGame();
+        });
+        
+        restartButton.addEventListener('click', () => {
+            deathScreen.style.display = 'none';
+            startGame();
+        });
+        
+        menuButton.addEventListener('click', () => {
+            deathScreen.style.display = 'none';
+            menuScreen.style.display = 'flex';
+        });
+        
+        // АДАПТАЦИЯ К РАЗМЕРУ ЭКРАНА
+        window.addEventListener('resize', () => {
+            if (gameRunning) {
+                player.style.left = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, parseFloat(player.style.left))) + 'px';
+                player.style.top = Math.max(0, Math.min(window.innerHeight - PLAYER_RADIUS*2, parseFloat(player.style.top))) + 'px';
+            }
+        });
+        
+        // ЗАГРУЗКА
+        timerDisplay.textContent = "0.000с";
+    </script>
 </body>
-    </html>
+</html>
