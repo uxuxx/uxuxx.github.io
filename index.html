@@ -20,7 +20,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* МЕНЮ */
         #menuScreen {
             position: fixed;
             width: 100vw;
@@ -72,7 +71,6 @@
             font-weight: 400;
         }
         
-        /* ИГРА */
         #gameScreen {
             position: fixed;
             width: 100vw;
@@ -107,7 +105,6 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         
-        /* ЭКРАН СМЕРТИ */
         #deathScreen {
             position: fixed;
             width: 100vw;
@@ -171,7 +168,6 @@
             box-shadow: 0 6px 15px rgba(117, 117, 117, 0.3);
         }
         
-        /* ЭФФЕКТЫ */
         .player-trail {
             position: absolute;
             background: rgba(68, 68, 68, 0.15);
@@ -182,20 +178,17 @@
     </style>
 </head>
 <body>
-    <!-- МЕНЮ -->
     <div id="menuScreen">
         <div id="title">WowBall</div>
         <button id="playButton">ИГРАТЬ</button>
         <div class="subtitle">Избегай оранжевых препятствий</div>
     </div>
     
-    <!-- ИГРА -->
     <div id="gameScreen">
         <div id="timer">0.000с</div>
         <div id="player"></div>
     </div>
     
-    <!-- ЭКРАН СМЕРТИ -->
     <div id="deathScreen">
         <div id="deathTitle">Игра окончена</div>
         <div id="deathStats">
@@ -210,7 +203,6 @@
     </div>
 
     <script>
-        // ЭЛЕМЕНТЫ
         const menuScreen = document.getElementById('menuScreen');
         const gameScreen = document.getElementById('gameScreen');
         const playButton = document.getElementById('playButton');
@@ -223,7 +215,6 @@
         const restartButton = document.getElementById('restartButton');
         const menuButton = document.getElementById('menuButton');
         
-        // НАСТРОЙКИ ИГРЫ
         const PLAYER_RADIUS = 22;
         const PLAYER_HITBOX_REDUCTION = 0.70;
         const OBSTACLE_HITBOX_REDUCTION = 0.85;
@@ -232,7 +223,7 @@
         let obstacles = [];
         let playerSpeed = 5;
         let obstacleSpeed = 3.5;
-        let obstacleSpawnTime = 1.0; // Чуть быстрее в начале
+        let obstacleSpawnTime = 1.0;
         let lastSpawnTime = 0;
         let obstaclesPassed = 0;
         let level = 1;
@@ -240,11 +231,9 @@
         let mouseY = window.innerHeight / 2;
         let lastTrailTime = 0;
         
-        // РАЗМЕР ИГРОКА
         player.style.width = PLAYER_RADIUS * 2 + 'px';
         player.style.height = PLAYER_RADIUS * 2 + 'px';
         
-        // СОЗДАНИЕ СЛЕДА
         function createTrail(x, y) {
             const trail = document.createElement('div');
             trail.className = 'player-trail';
@@ -261,7 +250,6 @@
             }, 100);
         }
         
-        // СОЗДАНИЕ ПРЕПЯТСТВИЯ
         function createObstacle() {
             const types = ['stick', 'square', 'bar', 'rectangle'];
             const type = types[Math.floor(Math.random() * types.length)];
@@ -292,11 +280,9 @@
             obstacle.style.width = width + 'px';
             obstacle.style.height = height + 'px';
             
-            // Позиция сверху с проходом
             const gapWidth = 100 + Math.random() * 80;
             const gapX = Math.random() * (window.innerWidth - gapWidth - width);
             
-            // Распределяем препятствия так, чтобы оставался проход
             let xPos;
             if (Math.random() > 0.5) {
                 xPos = Math.random() * gapX;
@@ -307,7 +293,6 @@
             obstacle.style.left = xPos + 'px';
             obstacle.style.top = '-100px';
             
-            // Иногда добавляем вращение
             if (Math.random() > 0.7) {
                 const rotation = Math.random() * 45 - 22.5;
                 obstacle.style.transform = `rotate(${rotation}deg)`;
@@ -327,7 +312,6 @@
             
             obstaclesPassed++;
             
-            // ЧУТЬ чаще второе препятствие
             if (Math.random() > 0.5 && obstaclesPassed > 3 && gameTime > 8) {
                 setTimeout(() => {
                     if (gameRunning && obstacles.length < 8) {
@@ -337,7 +321,6 @@
             }
         }
         
-        // ОБНОВЛЕНИЕ ИГРОКА
         function updatePlayer() {
             const currentX = parseFloat(player.style.left) || window.innerWidth / 2;
             const currentY = parseFloat(player.style.top) || window.innerHeight / 2;
@@ -349,31 +332,26 @@
             player.style.left = (currentX + dx * moveSpeed) + 'px';
             player.style.top = (currentY + dy * moveSpeed) + 'px';
             
-            // Границы экрана
             player.style.left = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, parseFloat(player.style.left))) + 'px';
             player.style.top = Math.max(0, Math.min(window.innerHeight - PLAYER_RADIUS*2, parseFloat(player.style.top))) + 'px';
             
-            // След
             if (Date.now() - lastTrailTime > 40) {
                 createTrail(currentX + PLAYER_RADIUS, currentY + PLAYER_RADIUS);
                 lastTrailTime = Date.now();
             }
         }
         
-        // ОБНОВЛЕНИЕ ПРЕПЯТСТВИЙ
         function updateObstacles(deltaTime) {
             for (let i = obstacles.length - 1; i >= 0; i--) {
                 const obs = obstacles[i];
                 obs.y += obs.speed;
                 obs.element.style.top = obs.y + 'px';
                 
-                // Медленное вращение
                 if (obs.rotation !== 0) {
                     obs.rotation += 0.5;
                     obs.element.style.transform = `rotate(${obs.rotation}deg)`;
                 }
                 
-                // Проверка столкновения
                 const playerRect = {
                     left: parseFloat(player.style.left) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
                     right: parseFloat(player.style.left) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
@@ -398,7 +376,6 @@
                     return;
                 }
                 
-                // Удаление за экраном
                 if (obs.y > window.innerHeight) {
                     obs.element.remove();
                     obstacles.splice(i, 1);
@@ -406,7 +383,6 @@
             }
         }
         
-        // ПРОВЕРКА СТОЛКНОВЕНИЯ
         function checkCollision(rect1, rect2) {
             return !(rect1.right < rect2.left || 
                      rect1.left > rect2.right || 
@@ -414,7 +390,6 @@
                      rect1.top > rect2.bottom);
         }
         
-        // ИГРОВОЙ ЦИКЛ
         let lastTime = 0;
         function gameLoop(currentTime) {
             if (!gameRunning) return;
@@ -422,64 +397,50 @@
             const deltaTime = (currentTime - lastTime) / 1000;
             lastTime = currentTime;
             
-            // Обновление времени
             gameTime += deltaTime;
             timerDisplay.textContent = gameTime.toFixed(3) + 'с';
             
-            // Увеличение уровня каждые 7 секунд
             const newLevel = Math.floor(gameTime / 7) + 1;
             if (newLevel > level) {
                 level = newLevel;
-                // ЧУТЬ больше ускорение
                 obstacleSpeed = 3.5 + level * 0.45;
                 playerSpeed = 5 + level * 0.3;
             }
             
-            // Обновление игрока
             updatePlayer();
             
-            // Спавн препятствий - ЧУТЬ БОЛЬШЕ
             lastSpawnTime += deltaTime;
             if (lastSpawnTime > obstacleSpawnTime) {
-                // ЧУТЬ больше препятствий на экране
                 if (obstacles.length < 7) {
                     createObstacle();
                 }
                 lastSpawnTime = 0;
                 
-                // ЧУТЬ быстрее спавн
                 obstacleSpawnTime = Math.max(0.6, 1.0 / (level * 0.45));
                 
-                // После 10 секунд - ЧУТЬ быстрее
                 if (gameTime > 10) {
                     obstacleSpawnTime = Math.max(0.5, obstacleSpawnTime);
                 }
                 
-                // После 30 секунд - ЧУТЬ быстрее
                 if (gameTime > 30) {
                     obstacleSpawnTime = Math.max(0.4, obstacleSpawnTime);
                 }
                 
-                // После 60 секунд - ЧУТЬ быстрее
                 if (gameTime > 60) {
                     obstacleSpawnTime = Math.max(0.35, obstacleSpawnTime);
                 }
                 
-                // После 100 секунд - ЧУТЬ быстрее
                 if (gameTime > 100) {
                     obstacleSpawnTime = Math.max(0.3, obstacleSpawnTime);
                 }
             }
             
-            // Обновление препятствий
             updateObstacles(deltaTime);
             
             requestAnimationFrame(gameLoop);
         }
         
-        // НАЧАЛО ИГРЫ
         function startGame() {
-            // Сброс
             gameTime = 0;
             obstacles.forEach(obs => obs.element.remove());
             obstacles = [];
@@ -490,13 +451,11 @@
             obstacleSpawnTime = 1.0;
             lastSpawnTime = 0;
             
-            // Позиция игрока
             mouseX = window.innerWidth / 2;
             mouseY = window.innerHeight / 2;
             player.style.left = (window.innerWidth / 2 - PLAYER_RADIUS) + 'px';
             player.style.top = (window.innerHeight / 2 - PLAYER_RADIUS) + 'px';
             
-            // Запуск игры
             gameRunning = true;
             deathScreen.style.display = 'none';
             gameScreen.style.display = 'block';
@@ -505,22 +464,18 @@
             requestAnimationFrame(gameLoop);
         }
         
-        // КОНЕЦ ИГРЫ
         function endGame() {
             gameRunning = false;
             
-            // Статистика
             finalTimeDisplay.textContent = gameTime.toFixed(3);
             finalLevelDisplay.textContent = level;
             finalObstaclesDisplay.textContent = obstaclesPassed;
             
-            // Показываем экран смерти
             setTimeout(() => {
                 deathScreen.style.display = 'flex';
             }, 700);
         }
         
-        // УПРАВЛЕНИЕ
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
@@ -532,7 +487,6 @@
             mouseY = e.touches[0].clientY;
         }, { passive: false });
         
-        // КНОПКИ
         playButton.addEventListener('click', () => {
             menuScreen.style.display = 'none';
             startGame();
@@ -548,7 +502,6 @@
             menuScreen.style.display = 'flex';
         });
         
-        // АДАПТАЦИЯ К РАЗМЕРУ ЭКРАНА
         window.addEventListener('resize', () => {
             if (gameRunning) {
                 player.style.left = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, parseFloat(player.style.left))) + 'px';
@@ -556,7 +509,6 @@
             }
         });
         
-        // ЗАГРУЗКА
         timerDisplay.textContent = "0.000с";
     </script>
 </body>
