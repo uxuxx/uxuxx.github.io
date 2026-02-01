@@ -36,7 +36,7 @@
             font-size: 64px;
             font-weight: 800;
             color: #333;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             letter-spacing: -2px;
         }
         
@@ -54,21 +54,125 @@
             margin-top: 30px;
         }
         
+        #helpButton {
+            padding: 12px 40px;
+            font-size: 18px;
+            background: #757575;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
         #playButton:hover {
             background: #F57C00;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
         }
         
-        #playButton:active {
+        #helpButton:hover {
+            background: #616161;
+            transform: translateY(-2px);
+        }
+        
+        #playButton:active, #helpButton:active {
             transform: translateY(0);
         }
         
+        #helpScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+        }
+        
+        .help-content {
+            width: 90%;
+            max-width: 350px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .help-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .help-section {
+            margin-bottom: 15px;
+        }
+        
+        .help-section p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        
+        .powerup-info {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        
+        .powerup-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .blue-icon { background: #2196f3; }
+        .green-icon { background: #4caf50; }
+        .yellow-icon { background: #ffeb3b; }
+        .purple-icon { 
+            background: #9c27b0; 
+            border-radius: 6px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        #closeHelp {
+            padding: 8px 30px;
+            font-size: 16px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         .subtitle {
-            font-size: 18px;
+            font-size: 16px;
             color: #666;
-            margin-top: 20px;
+            margin-top: 10px;
             font-weight: 400;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.4;
         }
         
         #gameScreen {
@@ -88,6 +192,29 @@
             color: #333;
             font-family: 'Courier New', monospace;
             font-weight: 600;
+            z-index: 20;
+        }
+        
+        #effectTimer {
+            position: absolute;
+            top: 55px;
+            left: 25px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .effect-blue {
+            color: #2196f3;
+            text-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+        }
+        
+        .effect-shield {
+            color: #9c27b0;
+            text-shadow: 0 0 5px rgba(156, 39, 176, 0.5);
         }
         
         #player {
@@ -96,6 +223,7 @@
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.15s ease-out;
+            z-index: 10;
         }
         
         .obstacle {
@@ -103,6 +231,41 @@
             background: #FF9800;
             border-radius: 6px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        
+        .powerup {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 8;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        .powerup-blue {
+            background: radial-gradient(circle at 30% 30%, #64b5f6, #1976d2);
+            box-shadow: 0 0 20px #2196f3, 0 0 40px #1976d2;
+        }
+        
+        .powerup-yellow {
+            background: radial-gradient(circle at 30% 30%, #fff176, #fbc02d);
+            box-shadow: 0 0 20px #ffeb3b, 0 0 40px #fbc02d;
+        }
+        
+        .powerup-green {
+            background: radial-gradient(circle at 30% 30%, #81c784, #388e3c);
+            box-shadow: 0 0 20px #4caf50, 0 0 40px #388e3c;
+        }
+        
+        .powerup-purple {
+            background: radial-gradient(circle at 30% 30%, #ba68c8, #7b1fa2);
+            box-shadow: 0 0 20px #9c27b0, 0 0 40px #7b1fa2;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border-radius: 8px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
         
         #deathScreen {
@@ -115,21 +278,23 @@
             justify-content: center;
             align-items: center;
             z-index: 50;
+            padding: 20px;
         }
         
         #deathTitle {
-            font-size: 42px;
+            font-size: 36px;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             font-weight: 700;
+            text-align: center;
         }
         
         #deathStats {
-            font-size: 22px;
+            font-size: 20px;
             color: #555;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         .stat-value {
@@ -139,12 +304,14 @@
         
         .death-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .death-button {
-            padding: 15px 40px;
-            font-size: 18px;
+            padding: 12px 30px;
+            font-size: 16px;
             background: #FF9800;
             color: white;
             border: none;
@@ -175,18 +342,121 @@
             pointer-events: none;
             z-index: 1;
         }
+        
+        .speed-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .speed-up {
+            background: radial-gradient(circle at center, rgba(33, 150, 243, 0.1) 0%, transparent 70%);
+        }
+        
+        .speed-down {
+            background: radial-gradient(circle at center, rgba(255, 235, 59, 0.1) 0%, transparent 70%);
+        }
+        
+        .dash-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .shield-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(156, 39, 176, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .shield-graphic {
+            position: absolute;
+            pointer-events: none;
+            z-index: 9;
+            opacity: 0;
+            transition: opacity 0.3s;
+            filter: drop-shadow(0 0 8px rgba(156, 39, 176, 0.7));
+        }
     </style>
 </head>
 <body>
     <div id="menuScreen">
         <div id="title">WowBall</div>
         <button id="playButton">ИГРАТЬ</button>
-        <div class="subtitle">Избегай оранжевых препятствий</div>
+        <button id="helpButton">СПРАВКА</button>
+        <div class="subtitle">Управляй шаром, уворачивайся от препятствий</div>
+    </div>
+    
+    <div id="helpScreen">
+        <div class="help-content">
+            <div class="help-title">Справка</div>
+            
+            <div class="help-section">
+                <p>Цель: продержаться как можно дольше.</p>
+                <p>Управление: веди пальцем/курсором.</p>
+                <p>Враги: оранжевые препятствия.</p>
+            </div>
+            
+            <div class="help-section">
+                <div class="powerup-info">
+                    <div class="powerup-icon blue-icon"></div>
+                    <div>
+                        <strong>Синий</strong><br>
+                        Ускорение ×2 на 2 сек
+                    </div>
+                </div>
+                
+                <div class="powerup-info">
+                    <div class="powerup-icon yellow-icon"></div>
+                    <div>
+                        <strong>Жёлтый</strong><br>
+                        Замедление времени ×0.5
+                    </div>
+                </div>
+                
+                <div class="powerup-info">
+                    <div class="powerup-icon green-icon"></div>
+                    <div>
+                        <strong>Зелёный</strong><br>
+                        Быстрый рывок
+                    </div>
+                </div>
+                
+                <div class="powerup-info">
+                    <div class="powerup-icon purple-icon"></div>
+                    <div>
+                        <strong>Фиолетовый щит</strong><br>
+                        Неуязвимость 5 сек
+                    </div>
+                </div>
+            </div>
+            
+            <button id="closeHelp">ПОНЯТНО</button>
+        </div>
     </div>
     
     <div id="gameScreen">
         <div id="timer">0.000с</div>
+        <div id="effectTimer"></div>
         <div id="player"></div>
+        <div class="speed-effect speed-up" id="speedUpEffect"></div>
+        <div class="speed-effect speed-down" id="speedDownEffect"></div>
+        <div class="dash-effect" id="dashEffect"></div>
+        <div class="shield-effect" id="shieldEffect"></div>
     </div>
     
     <div id="deathScreen">
@@ -205,42 +475,93 @@
     <script>
         const menuScreen = document.getElementById('menuScreen');
         const gameScreen = document.getElementById('gameScreen');
+        const helpScreen = document.getElementById('helpScreen');
         const playButton = document.getElementById('playButton');
+        const helpButton = document.getElementById('helpButton');
+        const closeHelp = document.getElementById('closeHelp');
         const player = document.getElementById('player');
         const timerDisplay = document.getElementById('timer');
+        const effectTimerDisplay = document.getElementById('effectTimer');
         const deathScreen = document.getElementById('deathScreen');
         const finalTimeDisplay = document.getElementById('finalTime');
         const finalLevelDisplay = document.getElementById('finalLevel');
         const finalObstaclesDisplay = document.getElementById('finalObstacles');
         const restartButton = document.getElementById('restartButton');
         const menuButton = document.getElementById('menuButton');
+        const speedUpEffect = document.getElementById('speedUpEffect');
+        const speedDownEffect = document.getElementById('speedDownEffect');
+        const dashEffect = document.getElementById('dashEffect');
+        const shieldEffect = document.getElementById('shieldEffect');
         
         const PLAYER_RADIUS = 22;
         const PLAYER_HITBOX_REDUCTION = 0.70;
         const OBSTACLE_HITBOX_REDUCTION = 0.85;
+        const POWERUP_SIZE = 25;
+        
+        const POWERUP_SPAWN_TIMES = {
+            blue: 38,
+            green: 29,
+            yellow: 100,
+            purple: 0
+        };
+        
+        const SHIELD_SPAWN_TIMES = [70, 150, 250, 350, 450, 550];
+        
         let gameTime = 0;
         let gameRunning = false;
         let obstacles = [];
+        let powerups = [];
         let playerSpeed = 5;
+        let basePlayerSpeed = 5;
         let obstacleSpeed = 3.5;
         let obstacleSpawnTime = 1.0;
         let lastSpawnTime = 0;
+        let lastPowerupSpawn = {
+            blue: 0,
+            green: 0,
+            yellow: 0,
+            purple: 0
+        };
+        let nextShieldSpawnIndex = 0;
         let obstaclesPassed = 0;
         let level = 1;
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         let lastTrailTime = 0;
         
+        let activeEffect = null;
+        let effectEndTime = 0;
+        let timeBonus = 0;
+        let timeMultiplier = 1;
+        let isDashing = false;
+        let dashVelocity = { x: 0, y: 0 };
+        let dashTime = 0;
+        
+        let hasShield = false;
+        let shieldDuration = 0;
+        let shieldEndTime = 0;
+        
         player.style.width = PLAYER_RADIUS * 2 + 'px';
         player.style.height = PLAYER_RADIUS * 2 + 'px';
         
-        function createTrail(x, y) {
+        helpButton.addEventListener('click', () => {
+            menuScreen.style.display = 'none';
+            helpScreen.style.display = 'flex';
+        });
+        
+        closeHelp.addEventListener('click', () => {
+            helpScreen.style.display = 'none';
+            menuScreen.style.display = 'flex';
+        });
+        
+        function createTrail(x, y, color = 'rgba(68, 68, 68, 0.15)') {
             const trail = document.createElement('div');
             trail.className = 'player-trail';
             trail.style.left = (x - PLAYER_RADIUS/2) + 'px';
             trail.style.top = (y - PLAYER_RADIUS/2) + 'px';
             trail.style.width = PLAYER_RADIUS + 'px';
             trail.style.height = PLAYER_RADIUS + 'px';
+            trail.style.background = color;
             gameScreen.appendChild(trail);
             
             setTimeout(() => {
@@ -321,36 +642,140 @@
             }
         }
         
-        function updatePlayer() {
-            const currentX = parseFloat(player.style.left) || window.innerWidth / 2;
-            const currentY = parseFloat(player.style.top) || window.innerHeight / 2;
+        function createPowerup(type) {
+            const powerup = document.createElement('div');
+            powerup.className = `powerup powerup-${type}`;
+            powerup.style.width = POWERUP_SIZE + 'px';
+            powerup.style.height = POWERUP_SIZE + 'px';
             
-            const dx = mouseX - currentX;
-            const dy = mouseY - currentY;
+            const x = Math.random() * (window.innerWidth - POWERUP_SIZE);
+            powerup.style.left = x + 'px';
+            powerup.style.top = '-50px';
             
-            const moveSpeed = playerSpeed * 0.06;
-            player.style.left = (currentX + dx * moveSpeed) + 'px';
-            player.style.top = (currentY + dy * moveSpeed) + 'px';
+            gameScreen.appendChild(powerup);
             
-            player.style.left = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, parseFloat(player.style.left))) + 'px';
-            player.style.top = Math.max(0, Math.min(window.innerHeight - PLAYER_RADIUS*2, parseFloat(player.style.top))) + 'px';
+            powerups.push({
+                element: powerup,
+                x: x,
+                y: -50,
+                type: type,
+                speed: 2.5
+            });
             
-            if (Date.now() - lastTrailTime > 40) {
-                createTrail(currentX + PLAYER_RADIUS, currentY + PLAYER_RADIUS);
-                lastTrailTime = Date.now();
+            lastPowerupSpawn[type] = gameTime;
+        }
+        
+        function checkPowerupSpawn() {
+            const types = ['blue', 'green'];
+            
+            for (const type of types) {
+                if (gameTime - lastPowerupSpawn[type] >= POWERUP_SPAWN_TIMES[type]) {
+                    if (Math.random() > 0.7 && !powerups.some(p => p.type === type)) {
+                        createPowerup(type);
+                    }
+                }
+            }
+            
+            if (gameTime - lastPowerupSpawn.yellow >= POWERUP_SPAWN_TIMES.yellow) {
+                if (Math.random() > 0.7 && !powerups.some(p => p.type === 'yellow')) {
+                    createPowerup('yellow');
+                }
             }
         }
         
-        function updateObstacles(deltaTime) {
-            for (let i = obstacles.length - 1; i >= 0; i--) {
-                const obs = obstacles[i];
-                obs.y += obs.speed;
-                obs.element.style.top = obs.y + 'px';
+        function checkShieldSpawn() {
+            if (nextShieldSpawnIndex < SHIELD_SPAWN_TIMES.length) {
+                const nextShieldTime = SHIELD_SPAWN_TIMES[nextShieldSpawnIndex];
                 
-                if (obs.rotation !== 0) {
-                    obs.rotation += 0.5;
-                    obs.element.style.transform = `rotate(${obs.rotation}deg)`;
+                if (gameTime >= nextShieldTime && !powerups.some(p => p.type === 'purple') && !hasShield) {
+                    if (Math.random() > 0.5) {
+                        createPowerup('purple');
+                        nextShieldSpawnIndex++;
+                    }
                 }
+            }
+        }
+        
+        function activatePowerup(type) {
+            if (activeEffect && type !== 'green' && type !== 'purple') return;
+            
+            if (type === 'blue') {
+                activeEffect = 'blue';
+                effectEndTime = gameTime + 2;
+                playerSpeed = basePlayerSpeed * 2;
+                speedUpEffect.style.opacity = '0.3';
+                timeBonus -= 2;
+                effectTimerDisplay.textContent = '-2.000с';
+                effectTimerDisplay.className = 'effect-blue';
+                effectTimerDisplay.style.opacity = '1';
+                
+                setTimeout(() => {
+                    effectTimerDisplay.style.opacity = '0';
+                }, 1000);
+            }
+            else if (type === 'yellow') {
+                activeEffect = 'yellow';
+                effectEndTime = gameTime + 2;
+                timeMultiplier = 0.5;
+                speedDownEffect.style.opacity = '0.3';
+            }
+            else if (type === 'green') {
+                isDashing = true;
+                dashTime = 0.2;
+                
+                const currentX = parseFloat(player.style.left) || window.innerWidth / 2;
+                const currentY = parseFloat(player.style.top) || window.innerHeight / 2;
+                
+                const dashPower = 15;
+                const angle = Math.atan2(mouseY - currentY, mouseX - currentX);
+                dashVelocity.x = Math.cos(angle) * dashPower;
+                dashVelocity.y = Math.sin(angle) * dashPower;
+                
+                dashEffect.style.opacity = '0.2';
+                setTimeout(() => {
+                    dashEffect.style.opacity = '0';
+                }, 300);
+                
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        createTrail(
+                            currentX + PLAYER_RADIUS,
+                            currentY + PLAYER_RADIUS,
+                            'rgba(76, 175, 80, 0.4)'
+                        );
+                    }, i * 30);
+                }
+            }
+            else if (type === 'purple') {
+                hasShield = true;
+                shieldDuration = 5;
+                shieldEndTime = gameTime + shieldDuration;
+                shieldEffect.style.opacity = '0.2';
+                
+                effectTimerDisplay.textContent = '+5.000с';
+                effectTimerDisplay.className = 'effect-shield';
+                effectTimerDisplay.style.opacity = '1';
+                
+                setTimeout(() => {
+                    effectTimerDisplay.style.opacity = '0';
+                }, 1000);
+            }
+        }
+        
+        function updateShield() {
+            if (hasShield) {
+                if (gameTime >= shieldEndTime) {
+                    hasShield = false;
+                    shieldEffect.style.opacity = '0';
+                }
+            }
+        }
+        
+        function updatePowerups(deltaTime) {
+            for (let i = powerups.length - 1; i >= 0; i--) {
+                const pwr = powerups[i];
+                pwr.y += pwr.speed;
+                pwr.element.style.top = pwr.y + 'px';
                 
                 const playerRect = {
                     left: parseFloat(player.style.left) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
@@ -359,21 +784,122 @@
                     bottom: parseFloat(player.style.top) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION)
                 };
                 
-                const obsHitboxWidth = obs.width * OBSTACLE_HITBOX_REDUCTION;
-                const obsHitboxHeight = obs.height * OBSTACLE_HITBOX_REDUCTION;
-                const obsHitboxX = obs.x + (obs.width - obsHitboxWidth) / 2;
-                const obsHitboxY = obs.y + (obs.height - obsHitboxHeight) / 2;
-                
-                const obsHitboxRect = {
-                    left: obsHitboxX,
-                    right: obsHitboxX + obsHitboxWidth,
-                    top: obsHitboxY,
-                    bottom: obsHitboxY + obsHitboxHeight
+                const pwrRect = {
+                    left: pwr.x,
+                    right: pwr.x + POWERUP_SIZE,
+                    top: pwr.y,
+                    bottom: pwr.y + POWERUP_SIZE
                 };
                 
-                if (checkCollision(playerRect, obsHitboxRect)) {
-                    endGame();
-                    return;
+                if (checkCollision(playerRect, pwrRect)) {
+                    activatePowerup(pwr.type);
+                    pwr.element.remove();
+                    powerups.splice(i, 1);
+                    continue;
+                }
+                
+                if (pwr.y > window.innerHeight) {
+                    pwr.element.remove();
+                    powerups.splice(i, 1);
+                }
+            }
+            
+            if (activeEffect && gameTime >= effectEndTime) {
+                if (activeEffect === 'blue') {
+                    playerSpeed = basePlayerSpeed;
+                    speedUpEffect.style.opacity = '0';
+                }
+                else if (activeEffect === 'yellow') {
+                    timeMultiplier = 1;
+                    speedDownEffect.style.opacity = '0';
+                }
+                activeEffect = null;
+            }
+            
+            updateShield();
+        }
+        
+        function updatePlayer() {
+            const currentX = parseFloat(player.style.left) || window.innerWidth / 2;
+            const currentY = parseFloat(player.style.top) || window.innerHeight / 2;
+            
+            let newX = currentX;
+            let newY = currentY;
+            
+            if (isDashing) {
+                newX += dashVelocity.x;
+                newY += dashVelocity.y;
+                
+                dashTime -= 0.016;
+                dashVelocity.x *= 0.9;
+                dashVelocity.y *= 0.9;
+                
+                if (dashTime <= 0) {
+                    isDashing = false;
+                }
+                
+                createTrail(newX + PLAYER_RADIUS, newY + PLAYER_RADIUS, 'rgba(76, 175, 80, 0.3)');
+            } else {
+                const dx = mouseX - currentX;
+                const dy = mouseY - currentY;
+                
+                const moveSpeed = playerSpeed * 0.06;
+                newX = currentX + dx * moveSpeed;
+                newY = currentY + dy * moveSpeed;
+            }
+            
+            newX = Math.max(0, Math.min(window.innerWidth - PLAYER_RADIUS*2, newX));
+            newY = Math.max(0, Math.min(window.innerHeight - PLAYER_RADIUS*2, newY));
+            
+            player.style.left = newX + 'px';
+            player.style.top = newY + 'px';
+            
+            if (Date.now() - lastTrailTime > 40 && !isDashing) {
+                let trailColor = 'rgba(68, 68, 68, 0.15)';
+                if (activeEffect === 'blue') trailColor = 'rgba(33, 150, 243, 0.2)';
+                else if (activeEffect === 'yellow') trailColor = 'rgba(255, 235, 59, 0.2)';
+                else if (hasShield) trailColor = 'rgba(156, 39, 176, 0.2)';
+                
+                createTrail(newX + PLAYER_RADIUS, newY + PLAYER_RADIUS, trailColor);
+                lastTrailTime = Date.now();
+            }
+        }
+        
+        function updateObstacles(deltaTime) {
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obs = obstacles[i];
+                obs.y += obs.speed * (activeEffect === 'yellow' ? timeMultiplier : 1);
+                obs.element.style.top = obs.y + 'px';
+                
+                if (obs.rotation !== 0) {
+                    obs.rotation += 0.5 * (activeEffect === 'yellow' ? timeMultiplier : 1);
+                    obs.element.style.transform = `rotate(${obs.rotation}deg)`;
+                }
+                
+                if (!hasShield) {
+                    const playerRect = {
+                        left: parseFloat(player.style.left) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                        right: parseFloat(player.style.left) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                        top: parseFloat(player.style.top) + PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION),
+                        bottom: parseFloat(player.style.top) + PLAYER_RADIUS * 2 - PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION)
+                    };
+                    
+                    const obsHitboxWidth = obs.width * OBSTACLE_HITBOX_REDUCTION;
+                    const obsHitboxHeight = obs.height * OBSTACLE_HITBOX_REDUCTION;
+                    const obsHitboxX = obs.x + (obs.width - obsHitboxWidth) / 2;
+                    const obsHitboxY = obs.y + (obs.height - obsHitboxHeight) / 2;
+                    
+                    const obsHitboxRect = {
+                        left: obsHitboxX,
+                        right: obsHitboxX + obsHitboxWidth,
+                        top: obsHitboxY,
+                        bottom: obsHitboxY + obsHitboxHeight
+                    };
+                    
+                    if (checkCollision(playerRect, obsHitboxRect)) {
+                        endGame();
+                        return;
+                    }
                 }
                 
                 if (obs.y > window.innerHeight) {
@@ -397,14 +923,18 @@
             const deltaTime = (currentTime - lastTime) / 1000;
             lastTime = currentTime;
             
-            gameTime += deltaTime;
-            timerDisplay.textContent = gameTime.toFixed(3) + 'с';
+            gameTime += deltaTime * timeMultiplier;
+            const displayTime = Math.max(0, gameTime + timeBonus);
+            timerDisplay.textContent = displayTime.toFixed(3) + 'с';
             
             const newLevel = Math.floor(gameTime / 7) + 1;
             if (newLevel > level) {
                 level = newLevel;
                 obstacleSpeed = 3.5 + level * 0.45;
-                playerSpeed = 5 + level * 0.3;
+                basePlayerSpeed = 5 + level * 0.3;
+                if (activeEffect !== 'blue') {
+                    playerSpeed = basePlayerSpeed;
+                }
             }
             
             updatePlayer();
@@ -418,23 +948,17 @@
                 
                 obstacleSpawnTime = Math.max(0.6, 1.0 / (level * 0.45));
                 
-                if (gameTime > 10) {
-                    obstacleSpawnTime = Math.max(0.5, obstacleSpawnTime);
-                }
-                
-                if (gameTime > 30) {
-                    obstacleSpawnTime = Math.max(0.4, obstacleSpawnTime);
-                }
-                
-                if (gameTime > 60) {
-                    obstacleSpawnTime = Math.max(0.35, obstacleSpawnTime);
-                }
-                
-                if (gameTime > 100) {
-                    obstacleSpawnTime = Math.max(0.3, obstacleSpawnTime);
-                }
+                if (gameTime > 10) obstacleSpawnTime = Math.max(0.5, obstacleSpawnTime);
+                if (gameTime > 30) obstacleSpawnTime = Math.max(0.4, obstacleSpawnTime);
+                if (gameTime > 60) obstacleSpawnTime = Math.max(0.35, obstacleSpawnTime);
+                if (gameTime > 100) obstacleSpawnTime = Math.max(0.3, obstacleSpawnTime);
             }
             
+            if (gameTime > 5) {
+                checkPowerupSpawn();
+                checkShieldSpawn();
+            }
+            updatePowerups(deltaTime);
             updateObstacles(deltaTime);
             
             requestAnimationFrame(gameLoop);
@@ -444,12 +968,35 @@
             gameTime = 0;
             obstacles.forEach(obs => obs.element.remove());
             obstacles = [];
+            powerups.forEach(pwr => pwr.element.remove());
+            powerups = [];
             obstaclesPassed = 0;
             level = 1;
             obstacleSpeed = 3.5;
+            basePlayerSpeed = 5;
             playerSpeed = 5;
             obstacleSpawnTime = 1.0;
             lastSpawnTime = 0;
+            
+            lastPowerupSpawn.blue = 0;
+            lastPowerupSpawn.green = 0;
+            lastPowerupSpawn.yellow = 0;
+            lastPowerupSpawn.purple = 0;
+            nextShieldSpawnIndex = 0;
+            
+            activeEffect = null;
+            timeBonus = 0;
+            timeMultiplier = 1;
+            isDashing = false;
+            dashVelocity = { x: 0, y: 0 };
+            hasShield = false;
+            shieldDuration = 0;
+            
+            speedUpEffect.style.opacity = '0';
+            speedDownEffect.style.opacity = '0';
+            dashEffect.style.opacity = '0';
+            shieldEffect.style.opacity = '0';
+            effectTimerDisplay.style.opacity = '0';
             
             mouseX = window.innerWidth / 2;
             mouseY = window.innerHeight / 2;
@@ -458,6 +1005,8 @@
             
             gameRunning = true;
             deathScreen.style.display = 'none';
+            menuScreen.style.display = 'none';
+            helpScreen.style.display = 'none';
             gameScreen.style.display = 'block';
             
             lastTime = performance.now();
@@ -467,7 +1016,7 @@
         function endGame() {
             gameRunning = false;
             
-            finalTimeDisplay.textContent = gameTime.toFixed(3);
+            finalTimeDisplay.textContent = Math.max(0, gameTime + timeBonus).toFixed(3);
             finalLevelDisplay.textContent = level;
             finalObstaclesDisplay.textContent = obstaclesPassed;
             
@@ -487,10 +1036,7 @@
             mouseY = e.touches[0].clientY;
         }, { passive: false });
         
-        playButton.addEventListener('click', () => {
-            menuScreen.style.display = 'none';
-            startGame();
-        });
+        playButton.addEventListener('click', startGame);
         
         restartButton.addEventListener('click', () => {
             deathScreen.style.display = 'none';
@@ -499,6 +1045,7 @@
         
         menuButton.addEventListener('click', () => {
             deathScreen.style.display = 'none';
+            gameScreen.style.display = 'none';
             menuScreen.style.display = 'flex';
         });
         
@@ -512,4 +1059,4 @@
         timerDisplay.textContent = "0.000с";
     </script>
 </body>
-</html>
+                         </html>
