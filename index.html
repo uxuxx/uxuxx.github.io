@@ -176,8 +176,8 @@
             letter-spacing: -2px;
         }
         
-        #playButton {
-            padding: 18px 60px;
+        #skinsButton {
+            padding: 18px 40px;
             font-size: 22px;
             background: #FF9800;
             color: white;
@@ -187,7 +187,97 @@
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
-            margin-top: 30px;
+            margin-top: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #skinsButton:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+        
+        #backgroundsButton {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+            margin-top: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #backgroundsButton:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+        
+        #leaderboardButton {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+            margin-top: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #leaderboardButton:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+        
+        #settingsButton {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+            margin-top: 10px;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        #settingsButton:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.4);
+        }
+        
+        #playButton {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+            margin-top: 10px;
+            min-width: 200px;
+            text-align: center;
         }
         
         #helpButton {
@@ -214,8 +304,493 @@
             transform: translateY(-2px);
         }
         
-        #playButton:active, #helpButton:active {
+        #playButton:active, #helpButton:active, #skinsButton:active, #backgroundsButton:active, #leaderboardButton:active, #settingsButton:active {
             transform: translateY(0);
+        }
+        
+        #skinsScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            padding: 20px;
+        }
+        
+        #backgroundsScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            padding: 20px;
+        }
+        
+        #leaderboardScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            padding: 20px;
+        }
+        
+        #settingsScreen {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255,255,255,0.98);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            padding: 20px;
+        }
+        
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+            margin-top: 8px;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF9800;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF9800;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .slider-value {
+            font-size: 14px;
+            color: #FF9800;
+            font-weight: 600;
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .hitbox-visual {
+            position: absolute;
+            border: 2px solid #ff0000;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .hitbox-visual.active {
+            opacity: 1;
+        }
+        
+        .skins-container {
+            width: 90%;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .backgrounds-container {
+            width: 90%;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .leaderboard-container {
+            width: 90%;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .settings-container {
+            width: 90%;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 12px;
+        }
+        
+        .setting-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background: #4caf50;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+        
+        .skins-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .skins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .backgrounds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .background-option {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 4px solid #ddd;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        
+        .background-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+        
+        .background-option.selected {
+            border-color: #FF9800;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+        }
+        
+        .background-option::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            color: #FF9800;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .background-option.selected::after {
+            opacity: 1;
+        }
+        
+        .leaderboard-list {
+            margin-bottom: 20px;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .leaderboard-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+        
+        .leaderboard-rank {
+            font-size: 24px;
+            font-weight: 900;
+            color: #FF9800;
+            width: 50px;
+            text-align: center;
+        }
+        
+        .leaderboard-name {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .leaderboard-time {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FF9800;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .telegram-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .telegram-link:hover {
+            background: #006699;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .telegram-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .skin-option {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 4px solid transparent;
+            position: relative;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        
+        .skin-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        }
+        
+        .skin-option.selected {
+            border-color: #FF9800;
+            box-shadow: 0 0 20px rgba(255, 152, 0, 0.5);
+        }
+        
+        .skin-option::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: white;
+            font-weight: 900;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .skin-option.selected::after {
+            opacity: 1;
+        }
+        
+        #closeSkins {
+            padding: 12px 40px;
+            font-size: 18px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+        
+        #closeSkins:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        #closeBackgrounds {
+            padding: 12px 40px;
+            font-size: 18px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+        
+        #closeBackgrounds:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        #closeLeaderboard {
+            padding: 12px 40px;
+            font-size: 18px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+        
+        #closeLeaderboard:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        #closeSettings {
+            padding: 12px 40px;
+            font-size: 18px;
+            background: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+        
+        #closeSettings:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        #fpsCounter {
+            position: absolute;
+            bottom: 50px;
+            left: 25px;
+            font-size: 14px;
+            color: #000;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        #fpsCounter.visible {
+            opacity: 1;
+        }
+        
+        #obstacleCounter {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            font-size: 14px;
+            color: #000;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        #obstacleCounter.visible {
+            opacity: 1;
         }
         
         #helpScreen {
@@ -355,7 +930,6 @@
         
         #player {
             position: absolute;
-            background: #444;
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.15s ease-out;
@@ -533,6 +1107,7 @@
     <div id="pauseBtn">пауза</div>
     <div id="pauseMenu">
         <button class="pause-button" id="resumeButton">ПРОДОЛЖИТЬ</button>
+        <button class="pause-button" id="pauseSettingsButton">НАСТРОЙКИ</button>
         <button class="pause-button" id="pauseMenuButton">МЕНЮ</button>
     </div>
     <div id="countdownScreen">
@@ -545,8 +1120,74 @@
     <div id="menuScreen">
         <div id="title">WowBall</div>
         <button id="playButton">ИГРАТЬ</button>
+        <button id="skinsButton">СКИНЫ</button>
+        <button id="backgroundsButton">ФОНЫ</button>
+        <button id="leaderboardButton">ТОП</button>
+        <button id="settingsButton">НАСТРОЙКИ</button>
         <button id="helpButton">СПРАВКА</button>
         <div class="subtitle">Управляй шаром, уворачивайся от препятствий</div>
+    </div>
+    <div id="skinsScreen">
+        <div class="skins-container">
+            <div class="skins-title">Выбери скин</div>
+            <div class="skins-grid" id="skinsGrid"></div>
+            <button id="closeSkins">НАЗАД</button>
+        </div>
+    </div>
+    <div id="backgroundsScreen">
+        <div class="backgrounds-container">
+            <div class="skins-title">Выбери фон</div>
+            <div class="backgrounds-grid" id="backgroundsGrid"></div>
+            <button id="closeBackgrounds">НАЗАД</button>
+        </div>
+    </div>
+    <div id="leaderboardScreen">
+        <div class="leaderboard-container">
+            <div class="skins-title">Топ игроков</div>
+            <div class="leaderboard-list" id="leaderboardList"></div>
+            <a href="https://t.me/opendurov_vf" target="_blank" class="telegram-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1280px-Telegram_2019_Logo.svg.png" alt="Telegram" class="telegram-icon">
+                @opendurov_vf
+            </a>
+            <button id="closeLeaderboard">НАЗАД</button>
+        </div>
+    </div>
+    <div id="settingsScreen">
+        <div class="settings-container">
+            <div class="skins-title">Настройки</div>
+            <div class="setting-item">
+                <div class="setting-label">Тропинка мяча</div>
+                <div class="toggle-switch active" id="trailToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Прозрачность мяча</div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="100" value="0" class="slider" id="opacitySlider">
+                    <div class="slider-value" id="opacityValue">0%</div>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Хитбоксы</div>
+                <div class="toggle-switch" id="hitboxToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Показать FPS</div>
+                <div class="toggle-switch" id="fpsToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+            <div class="setting-item">
+                <div class="setting-label">Показать препятствия</div>
+                <div class="toggle-switch" id="obstacleToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+            <button id="closeSettings">НАЗАД</button>
+        </div>
     </div>
     <div id="helpScreen">
         <div class="help-content">
@@ -596,7 +1237,10 @@
     <div id="gameScreen">
         <div id="timer">0.000с</div>
         <div id="effectTimer"></div>
+        <div id="fpsCounter">FPS: 0</div>
+        <div id="obstacleCounter">Препятствий: 0</div>
         <div id="player"></div>
+        <div class="hitbox-visual" id="playerHitbox"></div>
         <div class="speed-effect speed-up" id="speedUpEffect"></div>
         <div class="speed-effect speed-down" id="speedDownEffect"></div>
         <div class="dash-effect" id="dashEffect"></div>
@@ -615,14 +1259,302 @@
         </div>
     </div>
     <script>
-const menuScreen=document.getElementById('menuScreen');const gameScreen=document.getElementById('gameScreen');const helpScreen=document.getElementById('helpScreen');const playButton=document.getElementById('playButton');const helpButton=document.getElementById('helpButton');const closeHelp=document.getElementById('closeHelp');const player=document.getElementById('player');const timerDisplay=document.getElementById('timer');const effectTimerDisplay=document.getElementById('effectTimer');const deathScreen=document.getElementById('deathScreen');const finalTimeDisplay=document.getElementById('finalTime');const finalLevelDisplay=document.getElementById('finalLevel');const finalObstaclesDisplay=document.getElementById('finalObstacles');const restartButton=document.getElementById('restartButton');const menuButton=document.getElementById('menuButton');const speedUpEffect=document.getElementById('speedUpEffect');const speedDownEffect=document.getElementById('speedDownEffect');const dashEffect=document.getElementById('dashEffect');const shieldEffect=document.getElementById('shieldEffect');const eventDisplay=document.getElementById('eventDisplay');const fogEffect=document.getElementById('fogEffect');const pauseBtn=document.getElementById('pauseBtn');const pauseMenu=document.getElementById('pauseMenu');const resumeButton=document.getElementById('resumeButton');const pauseMenuButton=document.getElementById('pauseMenuButton');const countdownScreen=document.getElementById('countdownScreen');const countdownNumber=document.getElementById('countdownNumber');const PLAYER_RADIUS=22;const PLAYER_HITBOX_REDUCTION=0.70;const OBSTACLE_HITBOX_REDUCTION=0.85;const POWERUP_SIZE=25;const POWERUP_SPAWN_TIMES={blue:38,green:29,yellow:100,purple:0};const SHIELD_SPAWN_TIMES=[70,150,250,350,450,550];let gameTime=0;let gameRunning=false;let gamePaused=false;let obstacles=[];let powerups=[];let playerSpeed=5;let basePlayerSpeed=5;let obstacleSpeed=3.5;let obstacleSpawnTime=1.0;let lastSpawnTime=0;let lastPowerupSpawn={blue:0,green:0,yellow:0,purple:0};let nextShieldSpawnIndex=0;let obstaclesPassed=0;let level=1;let mouseX=window.innerWidth/2;let mouseY=window.innerHeight/2;let lastTrailTime=0;let activeEffect=null;let effectEndTime=0;let timeBonus=0;let timeMultiplier=1;let isDashing=false;let dashVelocity={x:0,y:0};let dashTime=0;let hasShield=false;let shieldDuration=0;let shieldEndTime=0;let events={inversion:{active:false,triggered:false,time:55,duration:9},fog:{active:false,triggered:false,time:140,duration:8},happiness:{active:false,triggered:false,time:-1,duration:5}};let inversionAngle=0;let inversionTimer=0;player.style.width=PLAYER_RADIUS*2+'px';player.style.height=PLAYER_RADIUS*2+'px';helpButton.addEventListener('click',()=>{menuScreen.style.display='none';helpScreen.style.display='flex';});closeHelp.addEventListener('click',()=>{helpScreen.style.display='none';menuScreen.style.display='flex';});pauseBtn.addEventListener('click',()=>{if(!gameRunning||gamePaused)return;gamePaused=true;pauseMenu.style.display='flex';});resumeButton.addEventListener('click',()=>{pauseMenu.style.display='none';startCountdown();});pauseMenuButton.addEventListener('click',()=>{gamePaused=false;gameRunning=false;pauseMenu.style.display='none';gameScreen.style.display='none';pauseBtn.style.display='none';menuScreen.style.display='flex';});function startCountdown(){countdownScreen.style.display='flex';let count=1;countdownNumber.textContent=count;const countInterval=setInterval(()=>{count++;if(count<=3){countdownNumber.textContent=count;}else{clearInterval(countInterval);countdownScreen.style.display='none';gamePaused=false;lastTime=performance.now();requestAnimationFrame(gameLoop);}},1000);}
+const menuScreen=document.getElementById('menuScreen');const gameScreen=document.getElementById('gameScreen');const helpScreen=document.getElementById('helpScreen');const skinsScreen=document.getElementById('skinsScreen');const backgroundsScreen=document.getElementById('backgroundsScreen');const leaderboardScreen=document.getElementById('leaderboardScreen');const settingsScreen=document.getElementById('settingsScreen');const playButton=document.getElementById('playButton');const helpButton=document.getElementById('helpButton');const skinsButton=document.getElementById('skinsButton');const backgroundsButton=document.getElementById('backgroundsButton');const leaderboardButton=document.getElementById('leaderboardButton');const settingsButton=document.getElementById('settingsButton');const pauseSettingsButton=document.getElementById('pauseSettingsButton');const closeHelp=document.getElementById('closeHelp');const closeSkins=document.getElementById('closeSkins');const closeBackgrounds=document.getElementById('closeBackgrounds');const closeLeaderboard=document.getElementById('closeLeaderboard');const closeSettings=document.getElementById('closeSettings');const skinsGrid=document.getElementById('skinsGrid');const backgroundsGrid=document.getElementById('backgroundsGrid');const leaderboardList=document.getElementById('leaderboardList');const trailToggle=document.getElementById('trailToggle');const opacitySlider=document.getElementById('opacitySlider');const opacityValue=document.getElementById('opacityValue');const hitboxToggle=document.getElementById('hitboxToggle');const fpsToggle=document.getElementById('fpsToggle');const obstacleToggle=document.getElementById('obstacleToggle');const player=document.getElementById('player');const timerDisplay=document.getElementById('timer');const effectTimerDisplay=document.getElementById('effectTimer');const fpsCounter=document.getElementById('fpsCounter');const obstacleCounter=document.getElementById('obstacleCounter');const deathScreen=document.getElementById('deathScreen');const finalTimeDisplay=document.getElementById('finalTime');const finalLevelDisplay=document.getElementById('finalLevel');const finalObstaclesDisplay=document.getElementById('finalObstacles');const restartButton=document.getElementById('restartButton');const menuButton=document.getElementById('menuButton');const speedUpEffect=document.getElementById('speedUpEffect');const speedDownEffect=document.getElementById('speedDownEffect');const dashEffect=document.getElementById('dashEffect');const shieldEffect=document.getElementById('shieldEffect');const eventDisplay=document.getElementById('eventDisplay');const fogEffect=document.getElementById('fogEffect');const pauseBtn=document.getElementById('pauseBtn');const pauseMenu=document.getElementById('pauseMenu');const resumeButton=document.getElementById('resumeButton');const pauseMenuButton=document.getElementById('pauseMenuButton');const countdownScreen=document.getElementById('countdownScreen');const countdownNumber=document.getElementById('countdownNumber');const playerHitbox=document.getElementById('playerHitbox');
+
+// Скины
+const skins = [
+    { id: 'default', color: '#444', name: 'Стандартный' },
+    { id: 'red', color: '#e53935', name: 'Красный' },
+    { id: 'green', color: '#43a047', name: 'Зелёный' },
+    { id: 'yellow', color: '#fdd835', name: 'Жёлтый' },
+    { id: 'cyan', color: '#00bcd4', name: 'Голубой' },
+    { id: 'orange', color: '#fb8c00', name: 'Оранжевый' },
+    { id: 'purple', color: '#8e24aa', name: 'Фиолетовый' },
+    { id: 'brown', color: '#6d4c41', name: 'Коричневый' }
+];
+
+// Фоны
+const backgrounds = [
+    { id: 'white', color: '#ffffff', name: 'Белый' },
+    { id: 'grey', color: '#9e9e9e', name: 'Серый' }
+];
+
+// Таблица лидеров
+const leaderboard = [
+    { rank: 1, name: 'uxuxx', time: '278.630' },
+    { rank: 2, name: 'Kviziks', time: '197.324' },
+    { rank: 3, name: 'Forever Young', time: '176.480' }
+];
+
+let selectedSkin = localStorage.getItem('selectedSkin') || 'default';
+let selectedBackground = localStorage.getItem('selectedBackground') || 'white';
+let trailEnabled = localStorage.getItem('trailEnabled') === null ? true : localStorage.getItem('trailEnabled') === 'true';
+let ballOpacity = localStorage.getItem('ballOpacity') ? parseInt(localStorage.getItem('ballOpacity')) : 0;
+let hitboxVisible = localStorage.getItem('hitboxVisible') === 'true';
+let fpsVisible = localStorage.getItem('fpsVisible') === 'true';
+let obstacleCountVisible = localStorage.getItem('obstacleCountVisible') === 'true';
+let frameCount = 0;
+let lastFpsTime = 0;
+let currentFps = 0;
+
+// Создание сетки скинов
+function initializeSkins() {
+    skinsGrid.innerHTML = '';
+    skins.forEach(skin => {
+        const skinOption = document.createElement('div');
+        skinOption.className = 'skin-option';
+        skinOption.style.background = skin.color;
+        skinOption.title = skin.name;
+        
+        if (skin.id === selectedSkin) {
+            skinOption.classList.add('selected');
+        }
+        
+        skinOption.addEventListener('click', () => {
+            document.querySelectorAll('.skin-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            skinOption.classList.add('selected');
+            selectedSkin = skin.id;
+            localStorage.setItem('selectedSkin', selectedSkin);
+            applySkin();
+        });
+        
+        skinsGrid.appendChild(skinOption);
+    });
+}
+
+// Создание сетки фонов
+function initializeBackgrounds() {
+    backgroundsGrid.innerHTML = '';
+    backgrounds.forEach(bg => {
+        const bgOption = document.createElement('div');
+        bgOption.className = 'background-option';
+        bgOption.style.background = bg.color;
+        bgOption.title = bg.name;
+        
+        if (bg.id === selectedBackground) {
+            bgOption.classList.add('selected');
+        }
+        
+        bgOption.addEventListener('click', () => {
+            document.querySelectorAll('.background-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            bgOption.classList.add('selected');
+            selectedBackground = bg.id;
+            localStorage.setItem('selectedBackground', selectedBackground);
+            applyBackground();
+        });
+        
+        backgroundsGrid.appendChild(bgOption);
+    });
+}
+
+// Создание списка лидеров
+function initializeLeaderboard() {
+    leaderboardList.innerHTML = '';
+    leaderboard.forEach(entry => {
+        const item = document.createElement('div');
+        item.className = 'leaderboard-item';
+        item.innerHTML = `
+            <div class="leaderboard-rank">${entry.rank}</div>
+            <div class="leaderboard-name">${entry.name}</div>
+            <div class="leaderboard-time">${entry.time}с</div>
+        `;
+        leaderboardList.appendChild(item);
+    });
+}
+
+// Инициализация настроек
+function initializeSettings() {
+    if (trailEnabled) {
+        trailToggle.classList.add('active');
+    } else {
+        trailToggle.classList.remove('active');
+    }
+    
+    opacitySlider.value = ballOpacity;
+    opacityValue.textContent = ballOpacity + '%';
+    applyBallOpacity();
+    
+    if (hitboxVisible) {
+        hitboxToggle.classList.add('active');
+    } else {
+        hitboxToggle.classList.remove('active');
+    }
+    
+    if (fpsVisible) {
+        fpsToggle.classList.add('active');
+    } else {
+        fpsToggle.classList.remove('active');
+    }
+    
+    if (obstacleCountVisible) {
+        obstacleToggle.classList.add('active');
+    } else {
+        obstacleToggle.classList.remove('active');
+    }
+    
+    trailToggle.addEventListener('click', () => {
+        trailEnabled = !trailEnabled;
+        trailToggle.classList.toggle('active');
+        localStorage.setItem('trailEnabled', trailEnabled);
+    });
+    
+    opacitySlider.addEventListener('input', (e) => {
+        ballOpacity = parseInt(e.target.value);
+        opacityValue.textContent = ballOpacity + '%';
+        localStorage.setItem('ballOpacity', ballOpacity);
+        applyBallOpacity();
+    });
+    
+    hitboxToggle.addEventListener('click', () => {
+        hitboxVisible = !hitboxVisible;
+        hitboxToggle.classList.toggle('active');
+        localStorage.setItem('hitboxVisible', hitboxVisible);
+        updateHitboxVisibility();
+    });
+    
+    fpsToggle.addEventListener('click', () => {
+        fpsVisible = !fpsVisible;
+        fpsToggle.classList.toggle('active');
+        localStorage.setItem('fpsVisible', fpsVisible);
+        updateFpsVisibility();
+    });
+    
+    obstacleToggle.addEventListener('click', () => {
+        obstacleCountVisible = !obstacleCountVisible;
+        obstacleToggle.classList.toggle('active');
+        localStorage.setItem('obstacleCountVisible', obstacleCountVisible);
+        updateObstacleCountVisibility();
+    });
+}
+
+function applyBallOpacity() {
+    const opacity = 1 - (ballOpacity / 100);
+    player.style.opacity = opacity;
+}
+
+function updateHitboxVisibility() {
+    const hitboxes = document.querySelectorAll('.hitbox-visual');
+    hitboxes.forEach(hb => {
+        if (hitboxVisible) {
+            hb.classList.add('active');
+        } else {
+            hb.classList.remove('active');
+        }
+    });
+}
+
+function updateFpsVisibility() {
+    if (fpsVisible) {
+        fpsCounter.classList.add('visible');
+    } else {
+        fpsCounter.classList.remove('visible');
+    }
+}
+
+function updateObstacleCountVisibility() {
+    if (obstacleCountVisible) {
+        obstacleCounter.classList.add('visible');
+    } else {
+        obstacleCounter.classList.remove('visible');
+    }
+}
+
+function applySkin() {
+    const skin = skins.find(s => s.id === selectedSkin);
+    if (skin) {
+        player.style.background = skin.color;
+    }
+}
+
+function applyBackground() {
+    const bg = backgrounds.find(b => b.id === selectedBackground);
+    if (bg) {
+        gameScreen.style.background = bg.color;
+    }
+}
+
+skinsButton.addEventListener('click', () => {
+    menuScreen.style.display = 'none';
+    skinsScreen.style.display = 'flex';
+});
+
+closeSkins.addEventListener('click', () => {
+    skinsScreen.style.display = 'none';
+    menuScreen.style.display = 'flex';
+});
+
+backgroundsButton.addEventListener('click', () => {
+    menuScreen.style.display = 'none';
+    backgroundsScreen.style.display = 'flex';
+});
+
+closeBackgrounds.addEventListener('click', () => {
+    backgroundsScreen.style.display = 'none';
+    menuScreen.style.display = 'flex';
+});
+
+leaderboardButton.addEventListener('click', () => {
+    menuScreen.style.display = 'none';
+    leaderboardScreen.style.display = 'flex';
+});
+
+closeLeaderboard.addEventListener('click', () => {
+    leaderboardScreen.style.display = 'none';
+    menuScreen.style.display = 'flex';
+});
+
+settingsButton.addEventListener('click', () => {
+    menuScreen.style.display = 'none';
+    settingsScreen.style.display = 'flex';
+});
+
+let settingsOpenedFromPause = false;
+
+closeSettings.addEventListener('click', () => {
+    settingsScreen.style.display = 'none';
+    if (settingsOpenedFromPause) {
+        pauseMenu.style.display = 'flex';
+        settingsOpenedFromPause = false;
+    } else {
+        menuScreen.style.display = 'flex';
+    }
+});
+
+pauseSettingsButton.addEventListener('click', () => {
+    pauseMenu.style.display = 'none';
+    settingsScreen.style.display = 'flex';
+    settingsOpenedFromPause = true;
+});
+
+const PLAYER_RADIUS=22;const PLAYER_HITBOX_REDUCTION=0.70;const OBSTACLE_HITBOX_REDUCTION=0.85;const POWERUP_SIZE=25;const POWERUP_SPAWN_TIMES={blue:38,green:29,yellow:100,purple:0};const SHIELD_SPAWN_TIMES=[70,150,250,350,450,550];let gameTime=0;let gameRunning=false;let gamePaused=false;let obstacles=[];let powerups=[];let playerSpeed=5;let basePlayerSpeed=5;let obstacleSpeed=3.5;let obstacleSpawnTime=1.0;let lastSpawnTime=0;let lastPowerupSpawn={blue:0,green:0,yellow:0,purple:0};let nextShieldSpawnIndex=0;let obstaclesPassed=0;let level=1;let mouseX=window.innerWidth/2;let mouseY=window.innerHeight/2;let lastTrailTime=0;let activeEffect=null;let effectEndTime=0;let timeBonus=0;let timeMultiplier=1;let isDashing=false;let dashVelocity={x:0,y:0};let dashTime=0;let hasShield=false;let shieldDuration=0;let shieldEndTime=0;let events={inversion:{active:false,triggered:false,time:55,duration:9},fog:{active:false,triggered:false,time:140,duration:8},happiness:{active:false,triggered:false,time:-1,duration:5}};let inversionAngle=0;let inversionTimer=0;player.style.width=PLAYER_RADIUS*2+'px';player.style.height=PLAYER_RADIUS*2+'px';
+
+initializeSkins();
+initializeBackgrounds();
+initializeLeaderboard();
+initializeSettings();
+applySkin();
+applyBackground();
+updateFpsVisibility();
+updateObstacleCountVisibility();
+
+helpButton.addEventListener('click',()=>{menuScreen.style.display='none';helpScreen.style.display='flex';});closeHelp.addEventListener('click',()=>{helpScreen.style.display='none';menuScreen.style.display='flex';});pauseBtn.addEventListener('click',()=>{if(!gameRunning||gamePaused)return;gamePaused=true;pauseMenu.style.display='flex';});resumeButton.addEventListener('click',()=>{pauseMenu.style.display='none';startCountdown();});pauseMenuButton.addEventListener('click',()=>{gamePaused=false;gameRunning=false;pauseMenu.style.display='none';gameScreen.style.display='none';pauseBtn.style.display='none';menuScreen.style.display='flex';});function startCountdown(){countdownScreen.style.display='flex';let count=1;countdownNumber.textContent=count;const countInterval=setInterval(()=>{count++;if(count<=3){countdownNumber.textContent=count;}else{clearInterval(countInterval);countdownScreen.style.display='none';gamePaused=false;lastTime=performance.now();requestAnimationFrame(gameLoop);}},1000);}
 function triggerEvent(eventName){if(events[eventName].active||events[eventName].triggered)return;events[eventName].active=true;events[eventName].triggered=true;events[eventName].endTime=gameTime+events[eventName].duration;eventDisplay.textContent=eventName==='inversion'?'Инверсия!':eventName==='fog'?'Туман!':'Счастье!';eventDisplay.style.opacity='1';setTimeout(()=>{eventDisplay.style.opacity='0';},2500);if(eventName==='inversion'){inversionTimer=0;}else if(eventName==='fog'){fogEffect.style.opacity='1';}else if(eventName==='happiness'){obstacles.forEach(obs=>obs.element.style.opacity='0.3');}}
 function updateEvents(deltaTime){for(const[eventName,event]of Object.entries(events)){if(event.active){if(gameTime>=event.endTime){event.active=false;if(eventName==='inversion'){inversionAngle=0;gameScreen.style.transform='';}else if(eventName==='fog'){fogEffect.style.opacity='0';}else if(eventName==='happiness'){obstacles.forEach(obs=>obs.element.style.opacity='1');}}}if(!event.triggered&&event.time>0&&gameTime>=event.time&&gameTime<=event.time+0.5){triggerEvent(eventName);}}if(events.inversion.active){inversionTimer+=deltaTime;if(inversionTimer>=3){inversionAngle=inversionAngle===0?180:0;gameScreen.style.transform=`rotate(${inversionAngle}deg)`;inversionTimer=0;}}}
-function createTrail(x,y,color='rgba(68, 68, 68, 0.15)'){const trail=document.createElement('div');trail.className='player-trail';trail.style.left=(x-PLAYER_RADIUS/2)+'px';trail.style.top=(y-PLAYER_RADIUS/2)+'px';trail.style.width=PLAYER_RADIUS+'px';trail.style.height=PLAYER_RADIUS+'px';trail.style.background=color;gameScreen.appendChild(trail);setTimeout(()=>{trail.style.opacity='0';trail.style.transition='opacity 0.6s';setTimeout(()=>trail.remove(),600);},100);}
+function createTrail(x,y,color='rgba(68, 68, 68, 0.15)'){if(!trailEnabled)return;const trail=document.createElement('div');trail.className='player-trail';trail.style.left=(x-PLAYER_RADIUS/2)+'px';trail.style.top=(y-PLAYER_RADIUS/2)+'px';trail.style.width=PLAYER_RADIUS+'px';trail.style.height=PLAYER_RADIUS+'px';trail.style.background=color;gameScreen.appendChild(trail);setTimeout(()=>{trail.style.opacity='0';trail.style.transition='opacity 0.6s';setTimeout(()=>trail.remove(),600);},100);}
 function createObstacle(){const types=['stick','square','bar','rectangle'];const type=types[Math.floor(Math.random()*types.length)];const obstacle=document.createElement('div');obstacle.className='obstacle';let width,height;switch(type){case'stick':width=12+Math.random()*10;height=60+Math.random()*80;break;case'square':width=height=35+Math.random()*25;break;case'bar':width=100+Math.random()*60;height=15+Math.random()*10;break;case'rectangle':width=40+Math.random()*30;height=25+Math.random()*20;break;}
 obstacle.style.width=width+'px';obstacle.style.height=height+'px';const gapWidth=100+Math.random()*80;const gapX=Math.random()*(window.innerWidth-gapWidth-width);let xPos;if(Math.random()>0.5){xPos=Math.random()*gapX;}else{xPos=gapX+gapWidth+Math.random()*(window.innerWidth-gapX-gapWidth-width);}
 obstacle.style.left=xPos+'px';obstacle.style.top='-100px';if(Math.random()>0.7){const rotation=Math.random()*45-22.5;obstacle.style.transform=`rotate(${rotation}deg)`;}
-gameScreen.appendChild(obstacle);obstacles.push({element:obstacle,x:xPos,y:-100,width:width,height:height,speed:obstacleSpeed*(0.9+Math.random()*0.2),rotation:parseFloat(obstacle.style.transform?.replace('rotate(','')?.replace('deg)',''))||0});obstaclesPassed++;if(Math.random()>0.5&&obstaclesPassed>3&&gameTime>8){setTimeout(()=>{if(gameRunning&&obstacles.length<8){createObstacle();}},200+Math.random()*300);}}
+const hitbox = document.createElement('div');
+hitbox.className = 'hitbox-visual';
+if (hitboxVisible) hitbox.classList.add('active');
+gameScreen.appendChild(hitbox);
+gameScreen.appendChild(obstacle);obstacles.push({element:obstacle,hitbox:hitbox,x:xPos,y:-100,width:width,height:height,speed:obstacleSpeed*(0.9+Math.random()*0.2),rotation:parseFloat(obstacle.style.transform?.replace('rotate(','')?.replace('deg)',''))||0});obstaclesPassed++;
+obstacleCounter.textContent = 'Препятствий: ' + obstaclesPassed;
+if(Math.random()>0.5&&obstaclesPassed>3&&gameTime>8){setTimeout(()=>{if(gameRunning&&obstacles.length<8){createObstacle();}},200+Math.random()*300);}}
 function createPowerup(type){const powerup=document.createElement('div');powerup.className=`powerup powerup-${type}`;powerup.style.width=POWERUP_SIZE+'px';powerup.style.height=POWERUP_SIZE+'px';const x=Math.random()*(window.innerWidth-POWERUP_SIZE);powerup.style.left=x+'px';powerup.style.top='-50px';gameScreen.appendChild(powerup);powerups.push({element:powerup,x:x,y:-50,type:type,speed:2.5});lastPowerupSpawn[type]=gameTime;}
 function checkPowerupSpawn(){const types=['blue','green'];for(const type of types){if(gameTime-lastPowerupSpawn[type]>=POWERUP_SPAWN_TIMES[type]){if(Math.random()>0.7&&!powerups.some(p=>p.type===type)){createPowerup(type);}}}
 if(gameTime-lastPowerupSpawn.yellow>=POWERUP_SPAWN_TIMES.yellow){if(Math.random()>0.7&&!powerups.some(p=>p.type==='yellow')){createPowerup('yellow');}}}
@@ -640,18 +1572,38 @@ activeEffect=null;}
 updateShield();}
 function updatePlayer(){const currentX=parseFloat(player.style.left)||window.innerWidth/2;const currentY=parseFloat(player.style.top)||window.innerHeight/2;let newX=currentX;let newY=currentY;if(isDashing){newX+=dashVelocity.x;newY+=dashVelocity.y;dashTime-=0.016;dashVelocity.x*=0.9;dashVelocity.y*=0.9;if(dashTime<=0){isDashing=false;}
 createTrail(newX+PLAYER_RADIUS,newY+PLAYER_RADIUS,'rgba(76, 175, 80, 0.3)');}else{const dx=mouseX-currentX;const dy=mouseY-currentY;const moveSpeed=playerSpeed*0.06;newX=currentX+dx*moveSpeed;newY=currentY+dy*moveSpeed;}
-newX=Math.max(0,Math.min(window.innerWidth-PLAYER_RADIUS*2,newX));newY=Math.max(0,Math.min(window.innerHeight-PLAYER_RADIUS*2,newY));player.style.left=newX+'px';player.style.top=newY+'px';if(Date.now()-lastTrailTime>40&&!isDashing){let trailColor='rgba(68, 68, 68, 0.15)';if(activeEffect==='blue')trailColor='rgba(33, 150, 243, 0.2)';else if(activeEffect==='yellow')trailColor='rgba(255, 235, 59, 0.2)';else if(hasShield)trailColor='rgba(156, 39, 176, 0.2)';createTrail(newX+PLAYER_RADIUS,newY+PLAYER_RADIUS,trailColor);lastTrailTime=Date.now();}}
+newX=Math.max(0,Math.min(window.innerWidth-PLAYER_RADIUS*2,newX));newY=Math.max(0,Math.min(window.innerHeight-PLAYER_RADIUS*2,newY));player.style.left=newX+'px';player.style.top=newY+'px';
+const hitboxSize = PLAYER_RADIUS * 2 * PLAYER_HITBOX_REDUCTION;
+const hitboxOffset = PLAYER_RADIUS * (1 - PLAYER_HITBOX_REDUCTION);
+playerHitbox.style.left = (newX + hitboxOffset) + 'px';
+playerHitbox.style.top = (newY + hitboxOffset) + 'px';
+playerHitbox.style.width = hitboxSize + 'px';
+playerHitbox.style.height = hitboxSize + 'px';
+playerHitbox.style.borderRadius = '50%';
+if(Date.now()-lastTrailTime>40&&!isDashing){let trailColor='rgba(68, 68, 68, 0.15)';if(activeEffect==='blue')trailColor='rgba(33, 150, 243, 0.2)';else if(activeEffect==='yellow')trailColor='rgba(255, 235, 59, 0.2)';else if(hasShield)trailColor='rgba(156, 39, 176, 0.2)';createTrail(newX+PLAYER_RADIUS,newY+PLAYER_RADIUS,trailColor);lastTrailTime=Date.now();}}
 function updateObstacles(deltaTime){for(let i=obstacles.length-1;i>=0;i--){const obs=obstacles[i];obs.y+=obs.speed*(activeEffect==='yellow'?timeMultiplier:1);obs.element.style.top=obs.y+'px';if(obs.rotation!==0){obs.rotation+=0.5*(activeEffect==='yellow'?timeMultiplier:1);obs.element.style.transform=`rotate(${obs.rotation}deg)`;}
-if(!hasShield&&!events.happiness.active){const playerRect={left:parseFloat(player.style.left)+PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),right:parseFloat(player.style.left)+PLAYER_RADIUS*2-PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),top:parseFloat(player.style.top)+PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),bottom:parseFloat(player.style.top)+PLAYER_RADIUS*2-PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION)};const obsHitboxWidth=obs.width*OBSTACLE_HITBOX_REDUCTION;const obsHitboxHeight=obs.height*OBSTACLE_HITBOX_REDUCTION;const obsHitboxX=obs.x+(obs.width-obsHitboxWidth)/2;const obsHitboxY=obs.y+(obs.height-obsHitboxHeight)/2;const obsHitboxRect={left:obsHitboxX,right:obsHitboxX+obsHitboxWidth,top:obsHitboxY,bottom:obsHitboxY+obsHitboxHeight};if(checkCollision(playerRect,obsHitboxRect)){endGame();return;}}
-if(obs.y>window.innerHeight){obs.element.remove();obstacles.splice(i,1);}}}
+const obsHitboxWidth=obs.width*OBSTACLE_HITBOX_REDUCTION;const obsHitboxHeight=obs.height*OBSTACLE_HITBOX_REDUCTION;const obsHitboxX=obs.x+(obs.width-obsHitboxWidth)/2;const obsHitboxY=obs.y+(obs.height-obsHitboxHeight)/2;
+obs.hitbox.style.left = obsHitboxX + 'px';
+obs.hitbox.style.top = obsHitboxY + 'px';
+obs.hitbox.style.width = obsHitboxWidth + 'px';
+obs.hitbox.style.height = obsHitboxHeight + 'px';
+if(!hasShield&&!events.happiness.active){const playerRect={left:parseFloat(player.style.left)+PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),right:parseFloat(player.style.left)+PLAYER_RADIUS*2-PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),top:parseFloat(player.style.top)+PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION),bottom:parseFloat(player.style.top)+PLAYER_RADIUS*2-PLAYER_RADIUS*(1-PLAYER_HITBOX_REDUCTION)};const obsHitboxRect={left:obsHitboxX,right:obsHitboxX+obsHitboxWidth,top:obsHitboxY,bottom:obsHitboxY+obsHitboxHeight};if(checkCollision(playerRect,obsHitboxRect)){endGame();return;}}
+if(obs.y>window.innerHeight){obs.element.remove();obs.hitbox.remove();obstacles.splice(i,1);}}}
 function checkCollision(rect1,rect2){return!(rect1.right<rect2.left||rect1.left>rect2.right||rect1.bottom<rect2.top||rect1.top>rect2.bottom);}
-let lastTime=0;function gameLoop(currentTime){if(!gameRunning||gamePaused)return;const deltaTime=(currentTime-lastTime)/1000;lastTime=currentTime;gameTime+=deltaTime*timeMultiplier;const displayTime=Math.max(0,gameTime+timeBonus);timerDisplay.textContent=displayTime.toFixed(3)+'с';const newLevel=Math.floor(gameTime/7)+1;if(newLevel>level){level=newLevel;obstacleSpeed=3.5+level*0.45;basePlayerSpeed=5+level*0.3;if(activeEffect!=='blue'){playerSpeed=basePlayerSpeed;}}
+let lastTime=0;function gameLoop(currentTime){if(!gameRunning||gamePaused)return;const deltaTime=(currentTime-lastTime)/1000;lastTime=currentTime;frameCount++;if(currentTime-lastFpsTime>=1000){currentFps=frameCount;fpsCounter.textContent='FPS: '+currentFps;frameCount=0;lastFpsTime=currentTime;}gameTime+=deltaTime*timeMultiplier;const displayTime=Math.max(0,gameTime+timeBonus);timerDisplay.textContent=displayTime.toFixed(3)+'с';const newLevel=Math.floor(gameTime/7)+1;if(newLevel>level){level=newLevel;obstacleSpeed=3.5+level*0.45;basePlayerSpeed=5+level*0.3;if(activeEffect!=='blue'){playerSpeed=basePlayerSpeed;}}
 updateEvents(deltaTime);updatePlayer();lastSpawnTime+=deltaTime;if(lastSpawnTime>obstacleSpawnTime){if(obstacles.length<7&&!events.happiness.active){createObstacle();}
 lastSpawnTime=0;obstacleSpawnTime=Math.max(0.6,1.0/(level*0.45));if(gameTime>10)obstacleSpawnTime=Math.max(0.5,obstacleSpawnTime);if(gameTime>30)obstacleSpawnTime=Math.max(0.4,obstacleSpawnTime);if(gameTime>60)obstacleSpawnTime=Math.max(0.35,obstacleSpawnTime);if(gameTime>100)obstacleSpawnTime=Math.max(0.3,obstacleSpawnTime);}
 if(gameTime>5){checkPowerupSpawn();checkShieldSpawn();}
 updatePowerups(deltaTime);updateObstacles(deltaTime);requestAnimationFrame(gameLoop);}
-function startGame(){gameTime=0;obstacles.forEach(obs=>obs.element.remove());obstacles=[];powerups.forEach(pwr=>pwr.element.remove());powerups=[];obstaclesPassed=0;level=1;obstacleSpeed=3.5;basePlayerSpeed=5;playerSpeed=5;obstacleSpawnTime=1.0;lastSpawnTime=0;lastPowerupSpawn.blue=0;lastPowerupSpawn.green=0;lastPowerupSpawn.yellow=0;lastPowerupSpawn.purple=0;nextShieldSpawnIndex=0;activeEffect=null;timeBonus=0;timeMultiplier=1;isDashing=false;dashVelocity={x:0,y:0};hasShield=false;shieldDuration=0;speedUpEffect.style.opacity='0';speedDownEffect.style.opacity='0';dashEffect.style.opacity='0';shieldEffect.style.opacity='0';effectTimerDisplay.style.opacity='0';fogEffect.style.opacity='0';eventDisplay.style.opacity='0';gameScreen.style.transform='';for(const event in events){events[event].active=false;events[event].triggered=false;}
-mouseX=window.innerWidth/2;mouseY=window.innerHeight/2;player.style.left=(window.innerWidth/2-PLAYER_RADIUS)+'px';player.style.top=(window.innerHeight/2-PLAYER_RADIUS)+'px';gameRunning=true;gamePaused=false;deathScreen.style.display='none';menuScreen.style.display='none';helpScreen.style.display='none';gameScreen.style.display='block';pauseBtn.style.display='flex';pauseMenu.style.display='none';lastTime=performance.now();requestAnimationFrame(gameLoop);}
+function startGame(){gameTime=0;obstacles.forEach(obs=>{obs.element.remove();if(obs.hitbox)obs.hitbox.remove();});obstacles=[];powerups.forEach(pwr=>pwr.element.remove());powerups=[];obstaclesPassed=0;level=1;obstacleSpeed=3.5;basePlayerSpeed=5;playerSpeed=5;obstacleSpawnTime=1.0;lastSpawnTime=0;lastPowerupSpawn.blue=0;lastPowerupSpawn.green=0;lastPowerupSpawn.yellow=0;lastPowerupSpawn.purple=0;nextShieldSpawnIndex=0;activeEffect=null;timeBonus=0;timeMultiplier=1;isDashing=false;dashVelocity={x:0,y:0};hasShield=false;shieldDuration=0;frameCount=0;lastFpsTime=0;currentFps=0;speedUpEffect.style.opacity='0';speedDownEffect.style.opacity='0';dashEffect.style.opacity='0';shieldEffect.style.opacity='0';effectTimerDisplay.style.opacity='0';fogEffect.style.opacity='0';eventDisplay.style.opacity='0';gameScreen.style.transform='';fpsCounter.textContent='FPS: 0';obstacleCounter.textContent='Препятствий: 0';for(const event in events){events[event].active=false;events[event].triggered=false;}
+applySkin();
+applyBackground();
+applyBallOpacity();
+updateHitboxVisibility();
+updateFpsVisibility();
+updateObstacleCountVisibility();
+if(hitboxVisible){playerHitbox.classList.add('active');}else{playerHitbox.classList.remove('active');}
+mouseX=window.innerWidth/2;mouseY=window.innerHeight/2;player.style.left=(window.innerWidth/2-PLAYER_RADIUS)+'px';player.style.top=(window.innerHeight/2-PLAYER_RADIUS)+'px';gameRunning=true;gamePaused=false;deathScreen.style.display='none';menuScreen.style.display='none';helpScreen.style.display='none';skinsScreen.style.display='none';backgroundsScreen.style.display='none';leaderboardScreen.style.display='none';settingsScreen.style.display='none';gameScreen.style.display='block';pauseBtn.style.display='flex';pauseMenu.style.display='none';lastTime=performance.now();requestAnimationFrame(gameLoop);}
 function endGame(){gameRunning=false;pauseBtn.style.display='none';finalTimeDisplay.textContent=Math.max(0,gameTime+timeBonus).toFixed(3);finalLevelDisplay.textContent=level;finalObstaclesDisplay.textContent=obstaclesPassed;setTimeout(()=>{deathScreen.style.display='flex';},700);}
 document.addEventListener('mousemove',(e)=>{mouseX=e.clientX;mouseY=e.clientY;});document.addEventListener('touchmove',(e)=>{e.preventDefault();mouseX=e.touches[0].clientX;mouseY=e.touches[0].clientY;},{passive:false});playButton.addEventListener('click',startGame);restartButton.addEventListener('click',()=>{deathScreen.style.display='none';startGame();});menuButton.addEventListener('click',()=>{deathScreen.style.display='none';gameScreen.style.display='none';menuScreen.style.display='flex';pauseBtn.style.display='none';});window.addEventListener('resize',()=>{if(gameRunning){player.style.left=Math.max(0,Math.min(window.innerWidth-PLAYER_RADIUS*2,parseFloat(player.style.left)))+'px';player.style.top=Math.max(0,Math.min(window.innerHeight-PLAYER_RADIUS*2,parseFloat(player.style.top)))+'px';}});timerDisplay.textContent="0.000с";
     </script>
